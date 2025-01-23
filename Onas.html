@@ -9,6 +9,48 @@
       <title>VearMe – Twój styl, Twoje zasady</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+      <style>
+        #about-us ul {
+        list-style-type: disc; 
+        margin-left: 20px; 
+        }
+
+        #about-us ol {
+        list-style-type: decimal;
+        margin-left: 20px; 
+        }
+
+        #about-us li {
+        margin-bottom: 8px; 
+        }
+
+        #about-us li ul, #about-us li ol {
+        margin-top: 5px; 
+        }
+
+        .section-kom {
+        background-image: url("zdjecia_produktow/tlo_komentarze.jpg"); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: 50px;
+        }
+
+        @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+        }
+        .title {
+        animation: blink 2s infinite;
+        }
+      </style>
     </head>
 <body>
     
@@ -60,6 +102,119 @@
       </div>
     </nav>
   </div>
+
+  <!--Blok kontakt-->
+  <div class="columns has-background-light p-6">
+    <div class="column is-full has-text-centered has-text-black" style="line-height: 1.9;">
+      <p class="is-size-5 has-text-weight-bold">DOWIEDZ SIĘ O NAS WIĘCEJ</p>
+      <p class="is-size-1 has-text-weight-bold">O nas</p>
+      <p class="is-size-5">Poznaj naszą markę – elegancja, która definiuje wyjątkowość</p>
+    </div>
+  </div>
+
+  <!--Wyniki-->
+  <nav class="level">
+    <div class="level-item has-text-centered" >
+      <div>
+        <p class="heading">Zamówienia</p>
+        <p class="title">3,456</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Produkty w koszyku</p>
+        <p class="title">123</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Klienci</p>
+        <p class="title">456K</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Opinie</p>
+        <p class="title">789</p>
+      </div>
+    </div>
+  </nav>
+
+  <!--Sekcja komentarze-->
+  <section class="section-kom pt-6 pl-5 pb-6">
+    <h1 class="is-size-2 has-text-black">KOMENTARZE</h1>
+    <h2 class="subtitle">
+      Co sądzą o nas nasi klienci</strong>
+    </h2>
+  </section>
+
+  <!--Wpisy-->
+  <article class="media pt-5">
+    <figure class="media-left pl-5">
+      <p class="image is-64x64">
+        <img src="zdjecia_produktow/komentujaca1.jpg"/>
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>Rozalia Kowalska</strong> <small>@RozaliaKowalska</small> <small>31m</small>
+          <br />
+          Świetna jakość produktów, zdecydowanie warte każdej wydanej złotówki. Torebkę, którą zakupiłam na tej stronie 2 lata temu dalej wygląda jak nowa! Zdecydowanie polecam! 
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item">
+            <span class="icon is-small "><i class="fas fa-reply"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fas fa-heart"></i></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div class="media-right">
+      <button class="delete"></button>
+    </div>
+  </article>
+  <article class="media">
+    <figure class="media-left pl-5">
+      <p class="image is-64x64">
+        <img src="zdjecia_produktow/komentujaca2.jpg" />
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>Anna Bednarek</strong> <small>@annbednarek</small> <small>31m</small>
+          <br />
+          Początkowo nie byłam przekonana co do jakości produktów z VearMe, natomiast po namowie przez koleżankę na zakup sukienki na uroczystą galę, moje wątpliwości natychmiastowo zostały rozchwiane. Jakość znakomita, rozmiar idealny (i nie oszukany jak na większości stron), a kontakt z firmą jest szybki i sympatyczny. Z całego serca polecam VearMe C:  
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item">
+            <span class="icon is-small"><i class="fas fa-reply"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fas fa-heart"></i></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div class="media-right">
+      <button class="delete"></button>
+    </div>
+  </article>
+
+  
 
   <!--Footer-->
   <footer class="section">
