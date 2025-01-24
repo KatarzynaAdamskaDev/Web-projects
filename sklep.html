@@ -77,7 +77,7 @@
           <div class="navbar-end is-flex is-flex-direction-column-mobile">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-link" href="konto.html">
+                <a class="button is-link" id="zakladka-konto">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
@@ -220,7 +220,11 @@
     document.querySelector('.animate-button').addEventListener('mouseleave', function() {
       this.style.transform = 'scale(1)';
     });
-
+      
+//Dodanie alertu o niedziałającej zakładce konto
+    document.getElementById('zakladka-konto').addEventListener('click',function(){
+      alert("Zakładka jest jeszcze niedostępna");
+    });
   </script>
 
   </body>
