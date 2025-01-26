@@ -16,7 +16,6 @@
           width: 100%;
           height: 50vh;
           overflow: hidden;
-          
           }
 
           .video-container video {
@@ -44,6 +43,53 @@
           .overlay p {
           font-size: 1.5rem;
           }
+          
+        figure.image{
+          display: inline-block;  
+          width:100%;
+          text-align: center;  
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          border-radius: 50%;
+          position: relative; 
+          transition: transform 0.3s ease;
+          color:black;
+        }
+
+        figure.image:hover {
+          transform: scale(1.2); 
+          cursor: pointer;
+        }
+
+        /* Style przycisku ,,Sprawdz" */
+        #sprawdz:hover {
+          background-color: #cccccc; 
+          transform: scale(1.2); 
+          cursor: pointer;
+        }
+
+        #sprawdz {
+        transition: transform 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animacja tekstu ,,Nowosc" */
+        #fade-in {
+          opacity: 0;
+          animation: fadeInOut 3s ease-in-out infinite; 
+          }
+
+        @keyframes fadeInOut {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 1; 
+          }
+          100% {
+            opacity: 0; 
+          }
+        }
+          
       </style>
   </head>
   <body>
@@ -106,11 +152,11 @@
         Twoja przeglądarka nie obsługuje tego formatu wideo.
       </video>
       <div class="overlay">
-        <h1 class="title is-1 has-text-grey-dark">Nowość</h1>
+        <h1 class="title is-1 has-text-grey-dark" id="fade-in">Nowość</h1>
         <p class="subtitle has-text-grey">Przejdź do naszej nowej aplikacji mobilnej <b>DressIT</b></p>
         
     <!--Przycisk Sprawdź aplikację--->
-        <a class="button is-white" href="DressIT.html">
+        <a class="button is-white" id="sprawdz" href="DressIT.html">
           <strong>Sprawdź</strong>
         </a>
       </div>
@@ -119,33 +165,41 @@
   
   
 <!---Główna sekcja-->
-  <section class="section" style="margin-top: 60px; margin-bottom: 60px;">
+  <section class="section" style="margin-top: 60px; margin-bottom: 30px;">
 
 <!--Kategorie produktów-->
     <div class="columns is-mobile is-multiline is-centered">
       <div class="column is-6-mobile is-3-tablet is-flex is-justify-content-center mb-6">
-        <figure class="image is-128x128">
-          <img class="is-rounded" src="zdjecia_produktow/torebka.jpg">
-          <figcaption class="has-text-centered has-text-weight-bold">Torebki</figcaption>
-        </figure>
+        <a href="torebki.html">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="zdjecia_produktow/torebka.jpg">
+            <figcaption class="has-text-centered has-text-weight-bold">Torebki</figcaption>
+          </figure>
+        </a>
       </div>
       <div class="column is-6-mobile is-3-tablet is-flex is-justify-content-center mb-6">
-        <figure class="image is-128x128">
-          <img class="is-rounded" src="zdjecia_produktow/scarf.jpg">
-          <figcaption class="has-text-centered has-text-weight-bold">Akcesoria</figcaption>
-        </figure>
+        <a href="akcesoria.html">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="zdjecia_produktow/scarf.jpg">
+            <figcaption class="has-text-centered has-text-weight-bold">Akcesoria</figcaption>
+          </figure>
+        </a>
       </div>
       <div class="column is-6-mobile is-3-tablet is-flex is-justify-content-center">
-        <figure class="image is-128x128">
-          <img class="is-rounded" src="zdjecia_produktow/dress.jpg">
-          <figcaption class="has-text-centered has-text-weight-bold">Odzież</figcaption>
-        </figure>
+        <a href="odziez.html">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="zdjecia_produktow/dress.jpg">
+            <figcaption class="has-text-centered has-text-weight-bold">Odzież</figcaption>
+          </figure>
+        </a>
       </div>
       <div class="column is-6-mobile is-3-tablet is-flex is-justify-content-center">
-        <figure class="image is-128x128">
-          <img class="is-rounded" src="zdjecia_produktow/shoes.jpg">
-          <figcaption class="has-text-centered has-text-weight-bold">Obuwie</figcaption>
-        </figure>
+        <a href="obuwie.html">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="zdjecia_produktow/shoes.jpg">
+            <figcaption class="has-text-centered has-text-weight-bold">Obuwie</figcaption>
+          </figure>
+        </a>
       </div>
     </div>
   </section>
