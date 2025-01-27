@@ -10,6 +10,64 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
       <link rel="icon" href="assets/VearMe.png" type="obraz/typ ikony">
+        <style>
+        /* -------------------------- Kontener koszyka ------------------------------ */
+        .cart-container {
+          position: absolute;
+          top: 60px; 
+          right: 20px; 
+          background-color: rgb(255, 255, 255);
+          padding: 20px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          width: 300px;
+          display: none; 
+          z-index: 1000;
+          border-radius: 10px;
+        }
+        
+        /* Dostosowanie dla mniejszych ekranów */
+        @media screen and (max-width: 768px) {
+          .cart-container {
+            width: 250px;
+            right: 0px;  
+            top: 50px;  
+          }
+        }
+        
+        /* Dostosowanie dla jeszcze mniejszych ekranów */
+        @media screen and (max-width: 480px) {
+          .cart-container {
+            width: 200px;
+            right: 5px;   
+            top: 60px;    
+            padding: 15px; 
+          }
+        }
+        
+        /* Zawartość koszyka */
+        .cart-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        /* Dodaj odstęp między elementami w koszyku */
+        #cart-items .cart-item {
+          margin-bottom: 15px; 
+          padding: 10px;
+          margin-top: 15px;
+          border-bottom: 1px solid #ddd;
+        }
+        
+        #cart-total {
+          margin-top: 20px;
+          text-align: center;
+        }
+        
+        #cart-container.show {
+          display: block; 
+        }
+        </style>
     </head>
 <body>
 <!--Menu-->
@@ -269,12 +327,104 @@
 <!---toggles the class is-active on both the navbar-burger and the targeted navbar-menu-->
   <script src="toggle.js">
   </script>
-    <script>
-      //Dodanie alertu o niedziałającej zakładce konto
-      document.getElementById('zakladka-konto').addEventListener('click',function(){
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  //Dodanie alertu o niedziałającej zakładce konto
+  document.getElementById('zakladka-konto').addEventListener('click',function(){
       alert("Zakładka jest jeszcze niedostępna");
     });
-    </script>
 
+    //---------------------------------------KOSZYK-----------------------------------------------
+$(document).ready(function() {
+  // Sprawdzamy, czy w localStorage jest zapisany koszyk
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Funkcja do aktualizacji widoku koszyka
+  function updateCartView() {
+    $('#cart-items').empty();
+    let totalPrice = 0;
+
+    cart.forEach((item, index) => {
+      $('#cart-items').append(`
+        <div class="cart-item">
+          <p>${item.name} - ${item.price} PLN
+          <button class="remove-from-cart button is-small " data-index="${index}"><i class="fa-solid fa-trash-can"></i></button></p>
+        </div>
+      `);
+      totalPrice += item.price;
+    });
+
+    $('#total-price').text(totalPrice + " PLN");
+    updateCartCount();  // Zaktualizowanie licznika
+  }
+
+  // Funkcja do zapisania koszyka do localStorage
+  function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  // Funkcja do aktualizacji licznika produktów w koszyku
+  function updateCartCount() {
+    const count = cart.length;
+
+    if (count > 0) {
+      $('#cart-count').text(`(${count})`).show();  
+    } else {
+      $('#cart-count').hide();  
+    }
+  }
+
+  // Funkcja do dodawania produktów do koszyka
+  $('.add-to-cart').on('click', function() {
+    const product = $(this).closest('.column').data();
+
+    // Dodanie produktu do koszyka
+    cart.push({
+      name: product.name,
+      price: parseFloat(product.price)
+    });
+
+    // Zaktualizowanie widoku koszyka
+    updateCartView();
+
+    // Zapisanie koszyka w localStorage
+    saveCartToLocalStorage();
+
+    // Wyświetlanie komunikatu, że produkt został dodany
+    const message = `Produkt ${product.name} został dodany do koszyka!`;
+    $('#cart-notification').text(message).fadeIn().delay(2000).fadeOut();
+  });
+
+  // Funkcja do usuwania produktów z koszyka
+  $(document).on('click', '.remove-from-cart', function() {
+    const index = $(this).data('index');
+    cart.splice(index, 1);
+
+    // Zaktualizowanie widoku koszyka
+    updateCartView();
+
+    // Zapisanie zaktualizowanego koszyka w localStorage
+    saveCartToLocalStorage();
+  });
+
+  // Pokazanie koszyka
+  $('#show-cart').on('click', function() {
+    $('#cart-container').toggleClass('show');
+  });
+
+  // Zamknięcie koszyka
+  $('#close-cart').on('click', function() {
+    $('#cart-container').removeClass('show');
+  });
+
+  // Funkcja "Przejdź do koszyka"
+  document.getElementById('go-to-cart').addEventListener('click',function(){
+    alert("Zakładka jest jeszcze niedostępna");
+  });
+  
+  // Inicjalizacja koszyka z localStorage (jeśli istnieje)
+  updateCartView();
+});
+</script>
 </body>
 </html>
