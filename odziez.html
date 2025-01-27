@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="VearMe – Twój sklep online z najnowszymi trendami w modzie. Oferujemy odzież, stylowe obuwie, eleganckie torebki oraz modne akcesoria, które dopełnią każdą stylizację. Odkryj wyjątkowe kolekcje już dziś!">
+      <meta name="keywords" content="odzież, obuwie, torebki, akcesoria, moda, sklep internetowy, VearMe">
+      <meta name="author" content="Julia Fidecka, Katarzyna Adamska">
+      <title>VearMe – Twój styl, Twoje zasady</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+      <link rel="icon" href="assets/VearMe.png" type="obraz/typ ikony">
+      <style>
+        #vearme, #click {
+          color: black !important;
+        }
+
+        #vearme:hover, #click:hover{
+          text-decoration: underline;
+        }
+        
+        /* Responsywność przycisków kategorii oraz filtrowania względem mniejszych ekranów */
+      @media (max-width: 768px) {
+        .button {
+          padding: 8px 16px;
+        }
+        div {
+          justify-content: flex-start; 
+        }
+      }
+      
+      @media (max-width: 480px) {
+        div {
+          justify-content: center; 
+        }
+        .button {
+          padding: 6px 12px;
+          font-size: 14px; 
+        }
+      }
+
+      /* -------------------Kontener koszyka----------------------- */
+      .cart-container {
+        position: absolute;
+        top: 60px; 
+        right: 20px; 
+        background-color: rgb(255, 255, 255);
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        display: none; 
+        z-index: 1000;
+        border-radius: 10px;
+      }
+
+      /* Dostosowanie dla mniejszych ekranów koszyk */
+      @media screen and (max-width: 768px) {
+        .cart-container {
+          width: 250px; 
+          right: 0px;
+          top: 50px;    
+        }
+      }
+
+      /* Dostosowanie dla jeszcze mniejszych ekranów koszyk */
+      @media screen and (max-width: 480px) {
+        .cart-container {
+          width: 200px;
+          right: 5px;   
+          top: 60px;   
+          padding: 15px; 
+        }
+      }
+
+      /* Zawartość koszyka */
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Odstęp między elementami w koszyku */
+      #cart-items .cart-item {
+        margin-bottom: 15px; /* Odstęp pomiędzy produktami */
+        padding: 10px;
+        margin-top: 15px;
+        border-bottom: 1px solid #ddd; /* Dla lepszego oddzielenia */
+      }
+
+      #cart-total {
+        margin-top: 20px;
+        text-align: center;
+      }
+    /* Wyświetla kontener koszyka */
+      #cart-container.show {
+        display: block; 
+      }
+
+      /* -------------------KONTENER PRODUKTÓW----------------------- */
+      /* Kontener produktów */
+      .columns {
+        display: flex;
+        flex-wrap: wrap;  
+        gap: 20px;       
+        justify-content: flex-start; 
+      }
+
+      /* Pojedynczy produkt */
+      .column {
+        flex-basis: 31%;  
+        max-width: 31%;
+        margin-bottom: 20px;  
+      }
+
+      /* Zmniejszenie szerokości produktów w przypadku mniejszych ekranów */
+      @media screen and (max-width: 768px) {
+        .column {
+          flex-basis: 48%;  
+          max-width: 48%;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .column {
+          flex-basis: 100%; 
+          max-width: 100%;
+        }
+      }
+
+      /* Ukrywanie produktów, które są niedostępne */
+      .product {
+        display: block;  
+      }
+
+      /* Stylizacja dla układu 3 produktów w jednym rzędzie */
+      .columns.is-multiline {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px; 
+      }
+
+      .column.is-12-mobile.is-4-tablet {
+        flex-basis: 23%;
+        margin-bottom: 40px;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .product-info {
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .more-info {
+        margin-top: 10px;
+      }
+
+      .add-to-cart {
+        margin-left: 28%; 
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+
+      .show-more {
+        margin-top: 10px;
+      }
+
+      /* Responsywność: Przekształcenie układu na mobilnych ekranach */
+      @media (max-width: 768px) {
+        .column.is-12-mobile.is-4-tablet {
+          flex-basis: 42%; 
+          margin-bottom: 0px; 
+        }
+        .column.is-12-mobile {
+          flex-basis: 100%; 
+          margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+          width: 80%; 
+          margin-top: 15px;
+          margin: 10px auto 20px; 
+        display: block; 
+        }
+
+        .show-more {
+          width: 80%; 
+        }
+        .add-to-cart {
+        margin: 10px auto 20px; 
+        display: block; 
+      }
+      }
+
+      /* -------------------MODYFIKACJA FILTRÓW----------------------- */
+      /* Modal - pozycjonowanie i tło */
+      .modal {
+        position: fixed;  
+        top: 0;
+        left: 0;  
+        right: 0;  
+        bottom: 0;
+        display: flex;  
+        justify-content: flex-start;  
+        align-items: center;  
+        z-index: 1000;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);  
+        display: none;  
+      }
+      
+      /* Box z filtrami */
+      .box {
+        position: fixed;  
+        top: 0;  
+        right: 0; 
+        bottom: 0;
+        width: 250px; 
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+        z-index: 1001;
+        border-radius:0;
+      }
+      
+      /* Tło modala */
+      .modal-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);  
+        z-index: 999;  
+      }
+      
+      /* Zawartość modala */
+      .modal-content {
+        width: 100%; 
+        height: 100%;
+        max-width: 1000px;  
+        max-height: 100%;  
+        overflow-y: auto;  
+        position: relative;
+        padding: 0px;
+        z-index: 1001;
+      }
+      
+      /* Przycisk zamknięcia */
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #000;
+        cursor: pointer;
+        z-index: 1002;
+      }
+
+      .apply-button-container{
+        margin-top: 60px;
+        margin-left: 20px;
+      }
+
+      .apply-button-container {
+        display: flex;
+        flex-direction: column;  
+        justify-content: flex-end; 
+        height: 18%;              
+    }
+
+    /* Zmiana pozycji przycisku na mniejszych ekranach */
+    @media (max-width: 1911px) {
+        .apply-button-container {
+            justify-content: flex-start; 
+            padding-top: 0px;           
+        }
+    }
+      </style>
+    </head>
+<body>
+
+<!-- Menu -->
+<div>
+  <div class="columns is-grouped-multiline"></div>
+  <nav class="navbar navigation is-sticky-top has-background-link-light is-spaced" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item has-text-weight-bold is-size-4 mr-6" href="sklep.html">
+        VearMe
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarMenu" class="navbar-menu is-size-6 has-text-weight-bold">
+      <div class="navbar-start">
+        <a class="navbar-item" href="Oferta.html">Oferta</a>
+        <a class="navbar-item" href="kontaktVearMe.html">Kontakt</a>
+        <a class="navbar-item" href="Onas.html">O nas</a>
+      </div>
+
+      <div class="navbar-end is-flex is-flex-direction-column-mobile">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-link" id="zakladka-konto">
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+              <strong>Konto</strong>
+            </a>
+            <a class="button is-link" id="show-cart">
+              <span class="icon is-small is-left">
+                <i class="fas fa-shopping-cart"></i>
+              </span>
+              <strong>Koszyk</strong>
+              <span id="cart-count" class="badge" style="display:none;">(0)</span> <!-- Licznik produktów w nawiasach -->
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- Komunikat o dodaniu do koszyka -->
+<div id="cart-notification" class="notification is-primary" style="display:none; position: fixed; top: 10px; right: 10px; z-index: 9999;"></div>
+
+<!-- Kontener koszyka (domyślnie ukryty) -->
+<div id="cart-container" class="cart-container">
+  <div class="cart-header">
+    <h3 style="font-weight: bold;">Twój koszyk</h3>
+    <button id="close-cart" class="button is-small is-danger" style="font-weight: bold;">Zamknij</button>
+  </div>
+  <div id="cart-items">
+  </div>
+  <div id="cart-total">
+    <p style="margin-bottom:10px;"><b>Suma:</b> <span id="total-price">0 PLN</span></p>
+    <button id="go-to-cart" class="button is-primary" style="font-weight: bold;">Przejdź do koszyka</button>
+  </div>
+</div>
+
+  <!------Alignment ------->
+<nav class="breadcrumb is-centered has-text-black" aria-label="breadcrumbs" style="margin-top:20px;">
+    <ul>
+      <li><a href="sklep.html" id="vearme">VearMe</a></li>
+      <li><a href="Oferta.html" id="click">Oferta</a></li>
+      <li><a href="#" id="click">Odzież</a></li>
+    </ul>
+  </nav>
+
+  <div class="container is-mobile" style="width: 100%; padding: 0;">
+
+    <!-- Menu kategorii jako przyciski i zakładka Filtry -->
+    <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
+      <a href="torebki.html" class="button is-link is-rounded" style="margin: 5px; padding: 10px 20px;">Torebki &nbsp; <i class="fa-solid fa-bag-shopping"></i></a>
+      <a href="akcesoria.html" class="button is-link is-rounded" style="margin: 5px; padding: 10px 20px;">Akcesoria &nbsp; <i class="fa-solid fa-gem"></i></a>
+      <a href="odziez.html" class="button is-link is-rounded" style="margin: 5px; padding: 10px 20px;">Odzież &nbsp; <i class="fa-solid fa-shirt"></i></a>
+      <a href="obuwie.html" class="button is-link is-rounded" style="margin: 5px; padding: 10px 20px;">Obuwie &nbsp; <i class="fa-solid fa-shoe-prints"></i></a>
+      <button id="filter-toggle" class="button is-warning is-rounded" style="margin: 5px; padding: 10px 20px;">Filtruj&nbsp;<i class="fa-solid fa-filter"></i></button>
+    </div>
+    
+   <!-- Modal z filtrami (początkowo ukryty) -->
+<div id="filter-modal" class="modal">
+  <div class="modal-background" onclick="toggleFilters()"></div>
+  <div class="modal-content">
+    <div class="box" style="margin: 0;">
+      <h4 class="title is-4 has-text-centered">Filtry</h4>
+
+      <!-- Filtr po cenie -->
+      <div style="margin-top:50px;">
+        <h5 class="subtitle is-5" style="font-weight: bold;">Cena</h5>
+        <ul>
+          <li><input type="checkbox" name="price" value="Do 100 zł" style="margin-right:10px;">Do 100 zł</li>
+          <li><input type="checkbox" name="price" value="Do 100 zł" style="margin-right:10px;">100 - 300 zł</li>
+          <li><input type="checkbox" name="price" value="Do 100 zł" style="margin-right:10px;">300 - 500 zł</li>
+          <li><input type="checkbox" name="price" value="Do 100 zł" style="margin-right:10px;">Powyżej 500 zł</li>
+        </ul>
+      </div>
+
+      <!-- Filtr po kolorze -->
+      <div style="margin-top:50px;">
+        <h5 class="subtitle is-5" style="font-weight: bold;">Kolor</h5>
+        <ul>
+          <li><input type="checkbox" name="color" style="margin-right:10px;">Czarny<i class="fa-solid fa-square" id="kolor1" style="margin-left:10px; color:black; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); "></i></li>
+          <li><input type="checkbox" name="color" style="margin-right:10px;">Beżowy<i class="fa-solid fa-square" id="kolor1" style="margin-left:10px; color:beige; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); "></i></li>
+          <li><input type="checkbox" name="color" style="margin-right:10px;">Różowy<i class="fa-solid fa-square" id="kolor1" style="margin-left:10px; color:pink; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);"></i></li>
+          <li><input type="checkbox" name="color" style="margin-right:10px;">Szary<i class="fa-solid fa-square" id="kolor1" style="margin-left:10px; color:grey; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);"></i></li>
+          <li><input type="checkbox" name="color" style="margin-right:10px;">Niebieski<i class="fa-solid fa-square" id="kolor1" style="margin-left:10px; color: blue; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);"></i></li>
+          <li><input type="checkbox" name="color" style="margin-right:10px;">Brązowy<i class="fa-solid fa-square" id="kolor1" style="margin-left:10px; color:brown; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);"></i></li>
+        </ul>
+      </div>
+      
+      <!-- Filtr po materiale -->
+      <div style="margin-top:50px;">
+        <h5 class="subtitle is-5" style="font-weight: bold;">Materiał</h5>
+        <ul>
+          <li><input type="checkbox" name="material" style="margin-right:10px;">Dzianina</li>
+          <li><input type="checkbox" name="material" style="margin-right:10px;">Poliester</li>
+          <li><input type="checkbox" name="material" style="margin-right:10px;">Satyna</li>
+          <li><input type="checkbox" name="material" style="margin-right:10px;">Len</li>
+          <li><input type="checkbox" name="material" style="margin-right:10px;">Tkanina</li>
+          <li><input type="checkbox" name="material" style="margin-right:10px;">Skóra ekologiczna</li>
+          <li><input type="checkbox" name="material" style="margin-right:10px;">Jeans</li>
+          <li><input type="checkbox" name="material" style="margin-right:10px;">Bawełna</li>
+        </ul>
+      </div>
+      <div class="apply-button-container">
+        <button class="button is-warning" onclick="applyFilters()">Zastosuj</button>
+      </div>
+      
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" onclick="toggleFilters()"><i class="fa-solid fa-xmark"></i></button>
+</div>
+
+   <!-- Oferta produktów po prawej stronie -->
+<section class="section">
+  <div class="columns is-multiline">
+    <!-- Produkt 1 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="1" data-name="T-shirt w paski" data-price="89.90" data-material="Dzianina" data-color="Beżowy">
+        <figure class="image is-160x160">
+          <img  src="zdjecia_produktow/bluzka1.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">T-shirt w paski</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Dzianina
+              <br>
+              <b>Cena:</b> 89.90 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 2 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="2" data-name="Brązowa marszczona bluzka" data-price="119.89" data-material="Poliester" data-color="Brązowy">
+        <figure class="image is-160x160">
+          <img class="is-rounded" src="zdjecia_produktow/bluzka3.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Marszczona bluzka</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Poliester
+              <br>
+              <b>Cena:</b> 119.89 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 3 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="3" data-name="Brązowa sukienka mini" data-price="154.90" data-material="Satyna" data-color="Brązowy">
+        <figure class="image is-160x160">
+          <img  src="zdjecia_produktow/dress.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Brązowa sukienka mini</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Satyna
+              <br>
+              <b>Cena:</b> 154.90 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 4 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="4" data-name="Kremowa kamizelka" data-price="129.90" data-material="Len" data-color="Beżowy">
+        <figure class="image is-160x160">
+          <img  src="zdjecia_produktow/kamizelka.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Kremowa kamizelka</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Len
+              <br>
+              <b>Cena:</b> 129.90 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 5 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="5" data-name="Krótka kurtka w stylu płaszcza" data-price="329" data-material="Tkanina" data-color="Beżowy">
+        <figure class="image is-160x160">
+          <img  src="zdjecia_produktow/kurtka.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Krótka kurtka w stylu płaszcza</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Tkanina
+              <br>
+              <b>Cena:</b> 329 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 6 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="6" data-name="Lniana narzutka" data-price="200.90" data-material="Len" data-color="Beżowy">
+        <figure class="image is-160x160">
+          <img src="zdjecia_produktow/ponczo.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Narzutka</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Len
+              <br>
+              <b>Cena:</b> 200.90 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 7 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="7" data-name="Satynowa spódnica midi" data-price="128.89" data-material="Satyna" data-color="Brązowy">
+        <figure class="image is-160x160">
+          <img  src="zdjecia_produktow/spodnica1.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Satynowa spódnica midi</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Satyna
+              <br>
+              <b>Cena:</b> 128.89 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 8 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="8" data-name="Czarna skórzana mini spódnica" data-price="199" data-material="Skóra ekologiczna" data-color="Czarny">
+        <figure class="image is-160x160">
+          <img class="is-rounded" src="zdjecia_produktow/spodniczka.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Czarna skórzana mini spódnica</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Skóra ekologiczna
+              <br>
+              <b>Cena:</b> 199 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 9 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="9" data-name="Niebieskie skinny jeans" data-price="159.90" data-material="Jeans" data-color="Niebieski">
+        <figure class="image is-160x160">
+          <img class="is-rounded" src="zdjecia_produktow/spodnie1.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Niebieskie skinny jeans</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Jeans + elastan
+              <br>
+              <b>Cena:</b> 159.90 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 10 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="10" data-name="Ciemnoszare spodnie wide leg" data-price="128.90" data-material="Bawełna" data-color="Szary">
+        <figure class="image is-160x160">
+          <img  src="zdjecia_produktow/spodnie2.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Ciemnoszare spodnie wide leg</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Bawełna
+              <br>
+              <b>Cena:</b> 128.90
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 11 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="11" data-name="Sukienka mini z falbankami" data-price="119.90" data-material="Poliester" data-color="Niebieski">
+        <figure class="image is-160x160">
+          <img  src="zdjecia_produktow/sukieneczka.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Sukienka mini z falbankami</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Poliester
+              <br>
+              <b>Cena:</b> 119.90 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+    <!-- Produkt 12 -->
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="12" data-name="Różowy sweterek z kokardką" data-price="129.90" data-material="Dzianina" data-color="Różowy">
+        <figure class="image is-160x160">
+          <img  src="zdjecia_produktow/sweterek.jpg" alt="Odzież">
+          <figcaption class="has-text-centered has-text-weight-bold">Różowy sweterek z kokardką</figcaption>
+          <div class="product-info">
+            <button class="button is-link is-small show-more">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+            </button>
+            <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
+              <b>Materiał:</b> Dzianina
+              <br>
+              <b>Cena:</b> 129.90 zł
+            </p>
+          </div>
+          <button class="button is-primary is-small add-to-cart">Dodaj do koszyka</button>
+        </figure>
+      </div>
+  </div>
+</section>
+
+  <!--Footer-->
+  <footer class="section">
+    <div class="container">
+        <div class="pb-5 is-flex is-flex-wrap-wrap is-justify-content-between is-justify-content-right">
+          <div>
+            <ul class="is-flex is-flex-wrap-wrap is-align-items-center">
+              <li class="mr-4"><a class="button is-white" href="Oferta.html">Oferta</a></li>
+              <li class="mr-4"><a class="button is-white" href="kontaktVearMe.html">Kontakt</a></li>
+              <li class="mr-4"><a class="button is-white" href="Onas.html">O nas</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class="pt-5" style="border-top: 1px solid #dee2e6;"></div>
+    <div class="container">
+      <div class="is-justify-content-between is-align-items-center has-text-centered">
+        <p>© 2025 Julia Fidecka i Katarzyna Adamska - VearMe | Wszystkie prawa zastrzeżone</p>
+        <div class="py-2"></div>
+        <div class="ml-auto">
+          <a class="mr-4 is-inline-block" href="https://www.facebook.com" target="_blank">
+            <img class="image is-32x32" src="assets/Facebook_Logo_Primary.png" alt="Facebook"></a>
+          <a class="mr-4 is-inline-block" href="https://www.instagram.com" target="_blank">
+            <img class="image is-32x32" src="assets/Instagram_Glyph_Gradient.png" alt="Instagram"></a>
+          <a class="is-inline-block" href="https://www.linkedin.com" target="_blank">
+            <img src="assets/LI-In-Bug.png" alt="Linkedin"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<!---toggles the class is-active on both the navbar-burger and the targeted navbar-menu-->
+  <script src="toggle.js">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    //Dodanie alertu o niedziałającej zakładce konto
+    document.getElementById('zakladka-konto').addEventListener('click',function(){
+            alert("Zakładka jest jeszcze niedostępna");
+          });
+  
+  //------------------------------------KOSZYK------------------------------------------  
+  $(document).ready(function() {
+    // Sprawdzamy, czy w localStorage jest zapisany koszyk
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    // Funkcja do aktualizacji widoku koszyka
+    function updateCartView() {
+      $('#cart-items').empty();
+      let totalPrice = 0;
+  
+      cart.forEach((item, index) => {
+        $('#cart-items').append(`
+          <div class="cart-item">
+            <p>${item.name} - ${item.price} PLN
+            <button class="remove-from-cart button is-small " data-index="${index}"><i class="fa-solid fa-trash-can"></i></button></p>
+          </div>
+        `);
+        totalPrice += item.price;
+      });
+  
+      $('#total-price').text(totalPrice + " PLN");
+      updateCartCount();  
+    }
+  
+    // Funkcja do zapisania koszyka do localStorage
+    function saveCartToLocalStorage() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+  
+    // Funkcja do aktualizacji licznika produktów w koszyku
+    function updateCartCount() {
+      const count = cart.length;  
+  
+      if (count > 0) {
+        $('#cart-count').text(`(${count})`).show();
+      } else {
+        $('#cart-count').hide();  
+      }
+    }
+  
+    // Funkcja do dodawania produktów do koszyka
+    $('.add-to-cart').on('click', function() {
+      const product = $(this).closest('.column').data();
+  
+      // Dodanie produktu do koszyka
+      cart.push({
+        name: product.name,
+        price: parseFloat(product.price)
+      });
+  
+      // Zaktualizowanie widoku koszyka
+      updateCartView();
+  
+      // Zapisanie koszyka w localStorage
+      saveCartToLocalStorage();
+  
+      // Wyświetlanie komunikatu, że produkt został dodany
+      const message = `Produkt ${product.name} został dodany do koszyka!`;
+      $('#cart-notification').text(message).fadeIn().delay(2000).fadeOut();
+    });
+  
+    // Funkcja do usuwania produktów z koszyka
+    $(document).on('click', '.remove-from-cart', function() {
+      const index = $(this).data('index');
+      cart.splice(index, 1);
+  
+      // Zaktualizowanie widoku koszyka
+      updateCartView();
+  
+      // Zapisanie zaktualizowanego koszyka w localStorage
+      saveCartToLocalStorage();
+    });
+  
+    // Pokazanie koszyka
+    $('#show-cart').on('click', function() {
+      $('#cart-container').toggleClass('show');
+    });
+  
+    // Zamknięcie koszyka
+    $('#close-cart').on('click', function() {
+      $('#cart-container').removeClass('show');
+    });
+  
+    // Funkcja "Przejdź do koszyka"
+    document.getElementById('go-to-cart').addEventListener('click',function(){
+      alert("Zakładka jest jeszcze niedostępna");
+    });
+  
+    // Inicjalizacja koszyka z localStorage (jeśli istnieje)
+    updateCartView();
+  });
+  
+  //------------------------------------MODAL FILTRÓW------------------------------------------  
+  // Funkcja do przełączania widoczności filtrów
+  function toggleFilters() {
+    var modal = document.getElementById('filter-modal');
+    if (modal.style.display === 'none' || modal.style.display === '') {
+      modal.style.display = 'flex'; 
+    } else {
+      modal.style.display = 'none';  
+    }
+  }
+  
+  // Funkcja do zastosowania filtrów (zamknięcie modala)
+  function applyFilters() {
+    toggleFilters();  
+  }
+  
+  // Obsługa przycisku "Pokaż Filtry"
+  document.getElementById('filter-toggle').addEventListener('click', toggleFilters);
+  
+  // Dodanie ukrywania/pokazywania tekstu po naciśnięciu ikony
+  document.querySelectorAll('.show-more').forEach(button => {
+    button.addEventListener('click', function() {
+      const moreInfo = this.closest('.product-info').querySelector('.more-info');
+      const icon = this.querySelector('i');
+      
+      // Pokazanie ukrytego tekstu i zmiana ikony
+      if (moreInfo.style.display === 'none') {
+        moreInfo.style.display = 'block';
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+      } else {
+        // Ukrycie tekstu i zmiana ikony
+        moreInfo.style.display = 'none';
+        icon.classList.remove('fa-minus');
+        icon.classList.add('fa-plus');
+      }
+    });
+  });
+  
+  // Funkcja do obsługi filtrowania
+  function applyFilters() {
+    const priceFilters = document.querySelectorAll('input[name="price"]:checked');
+    const colorFilters = document.querySelectorAll('input[name="color"]:checked');
+    const materialFilters = document.querySelectorAll('input[name="material"]:checked');
+  
+    // Pobieranie wszystkich produktów
+    const products = document.querySelectorAll('.column');
+  
+    products.forEach(product => {
+      let showProduct = true;
+  
+      // Sprawdzenie filtrów cenowych
+      const productPrice = parseFloat(product.getAttribute('data-price'));
+      let priceMatch = false;
+      priceFilters.forEach(filter => {
+        const priceRange = filter.parentElement.textContent.trim();
+        if (priceRange === 'Do 100 zł' && productPrice <= 100) priceMatch = true;
+        if (priceRange === '100 - 300 zł' && productPrice >= 100 && productPrice <= 300) priceMatch = true;
+        if (priceRange === '300 - 500 zł' && productPrice > 300 && productPrice <= 500) priceMatch = true;
+        if (priceRange === 'Powyżej 500 zł' && productPrice > 500) priceMatch = true;
+      });
+  
+      // Jeśli nie pasuje do żadnego zakresu cenowego, ukryj produkt
+      if (!priceMatch && priceFilters.length > 0) {
+        showProduct = false;
+      }
+  
+      // Sprawdzenie filtrów kolorów
+      const productColor = product.getAttribute('data-color');
+      let colorMatch = false;
+      colorFilters.forEach(filter => {
+        const colorName = filter.parentElement.textContent.trim();
+        if (colorName === productColor) {
+          colorMatch = true;
+        }
+      });
+  
+      // Jeśli nie pasuje do wybranego koloru, ukryj produkt
+      if (!colorMatch && colorFilters.length > 0) {
+        showProduct = false;
+      }
+  
+      // Sprawdzenie filtrów materiałów
+      const productMaterial = product.getAttribute('data-material');
+      let materialMatch = false;
+      materialFilters.forEach(filter => {
+        const materialName = filter.parentElement.textContent.trim();
+        if (materialName === productMaterial) {
+          materialMatch = true;
+        }
+      });
+  
+      // Jeśli nie pasuje do wybranego materiału, ukryj produkt
+      if (!materialMatch && materialFilters.length > 0) {
+        showProduct = false;
+      }
+  
+      // Pokaż/ukryj produkt
+      if (showProduct) {
+        product.style.display = '';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  }
+  </script>
+</body>
+</html>
