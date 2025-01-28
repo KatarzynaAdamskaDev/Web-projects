@@ -11,6 +11,14 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
       <link rel="icon" href="assets/VearMe.png" type="obraz/typ ikony">
       <style>
+        .section-background-image {
+        background-image: url('zdjecia_produktow/onas.png'); 
+        background-size: cover; 
+        background-position: center; 
+        padding: 50px 0;
+        }
+
+
         #about-us ul {
         list-style-type: disc; 
         margin-left: 20px; 
@@ -48,7 +56,7 @@
             opacity: 1;
         }
         }
-        .title {
+        .title-blink {
         animation: blink 2s infinite;
         }
 
@@ -185,41 +193,133 @@
 </div>
 
   <!--Blok kontakt-->
-  <div class="columns has-background-light p-6">
+  <div class="columns has-background-light p-6 section-background-image">
     <div class="column is-full has-text-centered has-text-black" style="line-height: 1.9;">
       <p class="is-size-5 has-text-weight-bold">DOWIEDZ SIĘ O NAS WIĘCEJ</p>
       <p class="is-size-1 has-text-weight-bold">O nas</p>
       <p class="is-size-5">Poznaj naszą markę – elegancja, która definiuje wyjątkowość</p>
     </div>
   </div>
+ 
 
   <!--Wyniki-->
-  <nav class="level">
+  <nav class="level has-text-black">
     <div class="level-item has-text-centered" >
       <div>
         <p class="heading">Zamówienia</p>
-        <p class="title">3,456</p>
+        <p class="title-blink is-size-3 has-text-weight-bold">3,456</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Produkty w koszyku</p>
-        <p class="title">123</p>
+        <p class="title-blink is-size-3 has-text-weight-bold">123</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Klienci</p>
-        <p class="title">456K</p>
+        <p class="title-blink is-size-3 has-text-weight-bold">456K</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Opinie</p>
-        <p class="title">789</p>
+        <p class="title-blink is-size-3 has-text-weight-bold">789</p>
       </div>
     </div>
   </nav>
+
+  <hr>
+
+<!-- Sekcja Informacje o marce -->
+<section class="section has-background-white">
+  <div class="container">
+    <h1 class="title has-text-centered">Nasza historia, misja i wartości</h1>
+    <div class="content">
+      <!-- Historia marki -->
+      <h2 class="subtitle">Historia marki</h2>
+      <p>
+        VearMe powstało z potrzeby połączenia funkcjonalności z estetyką. Zaczynając od małego rodzinnego sklepu w 2010 roku, szybko przekształciliśmy się w rozpoznawalną markę, która dostarcza wyjątkowe produkty dla każdego. Nasza pasja do mody oraz dbałość o szczegóły to coś, co wyróżnia nas od samego początku.
+      </p>
+      
+      <!-- Nasza misja -->
+      <h2 class="subtitle">Nasza misja</h2>
+      <p>
+        W VearMe wierzymy, że moda powinna być dostępna, unikalna i trwała. Naszą misją jest dostarczanie klientom produktów najwyższej jakości, które nie tylko podkreślają ich indywidualność, ale również wspierają świadome wybory zakupowe. Chcemy, aby każdy klient czuł się wyjątkowo, nosząc nasze ubrania, obuwie i akcesoria.
+      </p>
+
+      <!--Nasze wartości-->
+      <section class="section has-background-white has-text-centered">
+        <div class="container">
+          <h1 class="title has-text-centered">Nasze wartości</h1>
+          <div class="columns is-multiline">
+            <!-- Karta 1 -->
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="zdjecia_produktow/jakosc.jpg" alt="Jakość">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <h2 class="title">Jakość</h2>
+                  <p>Nasze produkty to synonim perfekcji, dbałości o szczegóły i trwałości, które przeżyją wiele sezonów.</p>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Karta 2 -->
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="zdjecia_produktow/moda.webp" alt="Moda">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <h2 class="title">Moda</h2>
+                  <p>Moda to dla nas sztuka wyrażania siebie. Każdy projekt to zaproszenie do wyrażenia własnej indywidualności.</p>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Karta 3 -->
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="zdjecia_produktow/srodowisko.jpg" alt="Zrównoważony rozwój">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <h2 class="title">Zrównoważony rozwój</h2>
+                  <p>Dbamy o naszą planetę, oferując produkty stworzone w zgodzie z naturą i odpowiedzialnością za środowisko.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Twórcy marki -->
+      <h2 class="subtitle">Poznaj twórców marki</h2>
+      <div class="columns is-vcentered">
+        <div class="column">
+          <p>
+            <strong>Julia Fidecka</strong> oraz <strong>Katarzyna Adamska</strong> to założycielki VearMe. Przyjaciółki, które połączyła pasja do mody i wspólne marzenie o stworzeniu marki, która zaspokoi potrzeby kobiet ceniących styl, jakość i wygodę. 
+          </p>
+          <p>
+            Julia, z wykształcenia projektantka mody, od zawsze interesowała się tworzeniem unikalnych produktów, które łączą funkcjonalność z estetyką. Katarzyna, z kolei, ma wieloletnie doświadczenie w branży sprzedaży i marketingu, co pozwala jej dostrzegać potrzeby rynku i skutecznie komunikować je z klientami.
+          </p>
+          <p>
+            Razem stworzyły markę, która jest nie tylko odzwierciedleniem ich pasji, ale także odpowiedzią na potrzeby współczesnych kobiet. VearMe to synonim elegancji, funkcjonalności i dbałości o każdy szczegół.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!--Sekcja komentarze-->
   <section class="section-kom pt-6 pl-5 pb-6">
