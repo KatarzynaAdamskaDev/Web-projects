@@ -193,102 +193,126 @@
       }
       }
 
-       /* -------------------KONTENER PRODUKTÓW----------------------- */
-      /* Kontener produktów */
-      .columns {
-        display: flex;
-        flex-wrap: wrap;  
-        gap: 20px;       
-        justify-content: flex-start; 
-      }
+     /* -------------------KONTENER PRODUKTÓW----------------------- */
+/* Kontener produktów */
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+  justify-content: flex-start;
+}
 
-      /* Pojedynczy produkt */
-      .column {
-        flex-basis: 31%;  
-        max-width: 31%;
-        margin-bottom: 20px;  
-      }
+/* Pojedynczy produkt */
+.column {
+  flex-basis: 23%;
+  max-width: 23%;
+  margin-bottom: 20px;
+}
 
-      /* Zmniejszenie szerokości produktów w przypadku mniejszych ekranów */
-      @media screen and (max-width: 768px) {
-        .column {
-          flex-basis: 48%;  
-          max-width: 48%;
-        }
-      }
+/* Jeśli są tylko dwa produkty, to będą wyświetlane obok siebie */
+.columns.is-two-products .column {
+  flex-basis: 48%;  
+  max-width: 48%;
+}
 
-      @media screen and (max-width: 480px) {
-        .column {
-          flex-basis: 100%; 
-          max-width: 100%;
-        }
-      }
+/* W przypadku mniejszych ekranów */
+@media screen and (max-width: 1024px) {
+  .column {
+    flex-basis: 31%; 
+    max-width: 31%;
+  }
+}
 
-      /* Ukrywanie produktów, które są niedostępne */
-      .product {
-        display: block;  
-      }
+@media screen and (max-width: 768px) {
+  .column {
+    flex-basis: 48%;  
+    max-width: 48%;
+  }
+}
 
-      /* Stylizacja dla układu 3 produktów w jednym rzędzie */
-      .columns.is-multiline {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 30px; 
-      }
+@media screen and (max-width: 480px) {
+  .column {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
 
-      .column.is-12-mobile.is-4-tablet {
-        flex-basis: 23%;
-        margin-bottom: 40px;
-        position: relative;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      }
+/* Ukrywanie produktów, które są niedostępne */
+.product {
+  display: block;
+}
 
-      .product-info {
-        margin-top: 10px;
-        text-align: center;
-      }
+/* Stylizacja dla układu 3 produktów w jednym rzędzie */
+.columns.is-multiline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 30px;  
+}
 
-      .more-info {
-        margin-top: 10px;
-      }
+.column.is-12-mobile.is-4-tablet {
+  flex-basis: 23%;
+  margin-bottom: 40px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
-      .add-to-cart {
-        margin-left: 28%; 
-        margin-top: 10px;
-        margin-bottom: 20px;
-      }
+/* Informacje o produkcie */
+.product-info {
+  margin-top: 10px;
+  text-align: center;
+}
 
-      .show-more {
-        margin-top: 10px;
-      }
+.more-info {
+  margin-top: 10px;
+}
 
-      /* Responsywność: Przekształcenie układu na mobilnych ekranach */
-      @media (max-width: 768px) {
-        .column.is-12-mobile.is-4-tablet {
-          flex-basis: 42%; 
-          margin-bottom: 0px; 
-        }
-        .column.is-12-mobile {
-          flex-basis: 100%; 
-          margin-bottom: 15px;
-        }
+.add-to-cart {
+  margin-left: 28%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 
-        .add-to-cart {
-          width: 80%; 
-          margin-top: 15px;
-          margin: 10px auto 20px; 
-        display: block; 
-        }
+.show-more {
+  margin-top: 10px;
+}
 
-        .show-more {
-          width: 80%; 
-        }
-        .add-to-cart {
-        margin: 10px auto 20px; 
-        display: block; 
-      }
-      }
+/* Responsywność: Przekształcenie układu na mobilnych ekranach */
+@media (max-width: 1390px) {
+  .column.is-12-mobile.is-4-tablet {
+    flex-basis: 42%;  
+    margin-bottom: 15px;
+  }
+
+  /* Stylizacja dla układu 3 produktów w jednym rzędzie */
+.columns.is-multiline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  justify-content: space-between;
+  gap: 23px;  
+}
+  .column.is-12-mobile {
+    flex-basis: 100%;  
+    margin-bottom: 15px;
+  }
+
+  .add-to-cart {
+    width: 80%; 
+    margin-top: 15px;
+    margin: 10px auto 20px; 
+    display: block; 
+  }
+
+  .show-more {
+    width: 80%; 
+  }
+
+  .add-to-cart {
+    margin: 10px auto 20px; 
+    display: block; 
+  }
+}
 
       /* -------------------MODYFIKACJA FILTRÓW----------------------- */
       /* Modal - pozycjonowanie i tło */
