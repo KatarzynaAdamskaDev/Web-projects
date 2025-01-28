@@ -304,7 +304,7 @@
       
       <!-- Twórcy marki -->
       <h2 class="subtitle">Poznaj twórców marki</h2>
-      <div class="columns is-vcentered">
+      <div class="columns is-vcentered has-text-justified" >
         <div class="column">
           <p>
             <strong>Julia Fidecka</strong> oraz <strong>Katarzyna Adamska</strong> to założycielki VearMe. Przyjaciółki, które połączyła pasja do mody i wspólne marzenie o stworzeniu marki, która zaspokoi potrzeby kobiet ceniących styl, jakość i wygodę. 
@@ -321,13 +321,11 @@
   </div>
 </section>
 
-  <!--Sekcja komentarze-->
-  <section class="section-kom pt-6 pl-5 pb-6">
-    <h1 class="is-size-2 has-text-black">KOMENTARZE</h1>
-    <h2 class="subtitle">
-      Co sądzą o nas nasi klienci</strong>
-    </h2>
-  </section>
+<!-- Sekcja komentarzy -->
+<section class="section-kom  pt-6 pl-5 pb-6 ">
+  <h1 class="is-size-2 has-text-black">KOMENTARZE</h1>
+  <h2 class="subtitle">Co sądzą o nas nasi klienci</h2>
+</section>
 
   <!--Wpisy-->
   <article class="media pt-5">
@@ -378,6 +376,32 @@
       </nav>
     </div>
   </article>
+
+  <!-- Sekcja na nowe komentarze -->
+  <div id="newComments" >
+  </div>
+
+    <!-- Formularz dodawania komentarzy -->
+    <div class="box column is-centered pt-5">
+      <h3 class="title is-4">Dodaj swój komentarz:</h3>
+      <form id="commentForm">
+        <div class="field">
+          <label class="label">Twoje imię</label>
+          <div class="control">
+            <input class="input" type="text" id="userName" placeholder="Wpisz swoje imię" required />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Twój komentarz</label>
+          <div class="control">
+            <textarea class="textarea" id="userComment" placeholder="Wpisz swój komentarz" required></textarea>
+          </div>
+        </div>
+        <div class="control">
+          <button class="button is-link" type="submit">Dodaj komentarz</button>
+        </div>
+      </form>
+    </div>
 
   <!--Footer-->
   <footer class="section">
@@ -511,6 +535,50 @@ $(document).ready(function() {
   // Inicjalizacja koszyka z localStorage
   updateCartView();
 });
+
+// Dodanie komentarza
+  document.getElementById("commentForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Zapobiega przeładowaniu strony
+
+    // Pobieranie wartości z pól formularza
+    const userName = document.getElementById("userName").value;
+    const userComment = document.getElementById("userComment").value;
+
+    // Tworzenie nowego elementu komentarza
+    const commentContainer = document.createElement("article");
+    commentContainer.classList.add("media", "pt-5");
+    commentContainer.innerHTML = `
+      <figure class="media-left pl-5">
+        <p class="image is-64x64">
+          <img src="zdjecia_produktow/avatar.png" alt="Avatar użytkownika" />
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>${userName}</strong> <small>@${userName.toLowerCase()}</small> <small>teraz</small>
+            <br />
+            ${userComment}
+          </p>
+        </div>
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <a class="level-item like-button">
+              <span class="icon is-small"><i class="fas fa-heart heart-icon"></i></span>
+            </a>
+            <span class="like-count">0</span>
+          </div>
+        </nav>
+      </div>
+    `;
+
+    // Dodanie nowego komentarza do sekcji
+    const newCommentsSection = document.getElementById("newComments");
+    newCommentsSection.appendChild(commentContainer);
+
+    // Czyszczenie formularza po dodaniu komentarza
+    document.getElementById("commentForm").reset();
+  });
 
 //--------------------------------SERDUSZKA-------------------------------------
 // Dodajemy nasłuchiwacz do wszystkich serduszek na stronie
