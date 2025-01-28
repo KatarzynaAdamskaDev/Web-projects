@@ -368,7 +368,7 @@
         display: flex;
         flex-direction: column;  
         justify-content: flex-end; 
-        height: 4%;              
+        height: auto;               
     }
 
     /* Zmiana pozycji przycisku na mniejszych ekranach */
@@ -499,14 +499,7 @@
       <div style="margin-top:50px;">
         <h5 class="subtitle is-5" style="font-weight: bold;">Materiał</h5>
         <ul>
-          <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Akryl">Len</li>
-          <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Poliester">Poliester</li>
-          <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Jeans">Jeans</li>
-          <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Skóra naturalna">Skóra naturalna</li>
-          <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Skóra ekologiczna">Skóra ekologiczna</li>
-          <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Skóra lakierowana">Skóra lakierowana</li>
-          <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Skóra syntetyczna">Skóra syntetyczna</li>
-          <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Bawełna">Bawełna</li>
+          <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Skóra ekologiczna">Skóra</li>
           <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Srebro">Srebro</li>
           <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Złoto">Złoto</li>
           <li><input type="checkbox" name="material" style="margin-right:10px;" class="material-filter" value="Tkanina">Tkanina</li>
@@ -529,7 +522,7 @@
   <div class="columns is-multiline">
 <!-------------------------------------------PRODUKTY 1-12------------------------------------------------------------>
     <!-- Produkt 1 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="1" data-name="Zielona torebka" data-price="299" data-material="Skóra naturalna" data-color="Zielony">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="1" data-name="Zielona torebka" data-price="299" data-material="Skóra" data-color="Zielony">
       <figure class="image is-160x160">
         <img class="is-rounded" src="zdjecia_produktow/torebka1.jpg" alt="Zielona torebka">
         <figcaption class="has-text-centered has-text-weight-bold">Zielona torebka</figcaption>
@@ -547,7 +540,7 @@
       </figure>
     </div>
     <!-- Produkt 2 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="2" data-name="Lniana narzutka" data-price="200.90" data-material="Len" data-color="Beżowy">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="2" data-name="Lniana narzutka" data-price="200.90" data-material="Tkanina" data-color="Beżowy">
       <figure class="image is-160x160">
         <img src="zdjecia_produktow/ponczo.jpg" alt="Odzież">
         <figcaption class="has-text-centered has-text-weight-bold">Narzutka</figcaption>
@@ -565,7 +558,7 @@
       </figure>
     </div>
     <!-- Produkt 3 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="3" data-name="Białe baleriny" data-price="169.90" data-material="Skóra ekologiczna" data-color="Biały">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="3" data-name="Białe baleriny" data-price="169.90" data-material="Skóra" data-color="Biały">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/baleriny2.png" style="margin-top:10px;"  alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Białe baleriny</figcaption>
@@ -583,7 +576,7 @@
       </figure>
     </div>
     <!-- Produkt 4 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="4" data-name="Brązowa marszczona bluzka" data-price="119.89" data-material="Poliester" data-color="Brązowy">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="4" data-name="Brązowa marszczona bluzka" data-price="119.89" data-material="Tkanina" data-color="Brązowy">
       <figure class="image is-160x160">
         <img class="is-rounded" src="zdjecia_produktow/bluzka3.jpg" alt="Odzież">
         <figcaption class="has-text-centered has-text-weight-bold">Marszczona bluzka</figcaption>
@@ -601,7 +594,7 @@
       </figure>
     </div>
     <!-- Produkt 5 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="5" data-name="Skórzany brazowy pasek" data-price="159.90" data-material="Skóra naturalna" data-color="Brązowy">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="5" data-name="Skórzany brazowy pasek" data-price="159.90" data-material="Skóra" data-color="Brązowy">
       <figure class="image is-160x160">
         <img class="is-rounded" src="zdjecia_produktow/pasek1.jpg" alt="Akcesoria">
         <figcaption class="has-text-centered has-text-weight-bold">Skórzany brązowy pasek</figcaption>
@@ -619,7 +612,7 @@
       </figure>
     </div>
     <!-- Produkt 6 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="6" data-name="Złote szpilki motyle" data-price="689.90" data-material="Skóra naturalna" data-color="Złoty">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="6" data-name="Złote szpilki motyle" data-price="689.90" data-material="Skóra" data-color="Złoty">
       <figure class="image is-160x160">
         <img class="is-rounded" src="zdjecia_produktow/shoes.jpg" alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Złote szpilki motyle</figcaption>
@@ -673,7 +666,7 @@
       </figure>
     </div>
     <!-- Produkt 9 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="9" data-name="Czarna skórzana mini spódnica" data-price="199" data-material="Skóra ekologiczna" data-color="Czarny">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="9" data-name="Czarna skórzana mini spódnica" data-price="199" data-material="Skóra" data-color="Czarny">
       <figure class="image is-160x160">
         <img class="is-rounded" src="zdjecia_produktow/spodniczka.jpg" alt="Odzież">
         <figcaption class="has-text-centered has-text-weight-bold">Czarna skórzana mini spódnica</figcaption>
@@ -691,7 +684,7 @@
       </figure>
     </div>
     <!-- Produkt 10 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="10" data-name="Torebka z kwiecistym motywem" data-price="399" data-material="Skóra naturalna" data-color="Biały">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="10" data-name="Torebka z kwiecistym motywem" data-price="399" data-material="Skóra" data-color="Biały">
       <figure class="image is-160x160">
         <img class="is-rounded" src="zdjecia_produktow/torebka10.jpg" alt="Torebki">
         <figcaption class="has-text-centered has-text-weight-bold">Torebka z kwiecistym motywem</figcaption>
@@ -709,7 +702,7 @@
       </figure>
     </div>
     <!-- Produkt 11 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="11" data-name="Niebieskie skinny jeans" data-price="159.90" data-material="Jeans" data-color="Niebieski">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="11" data-name="Niebieskie skinny jeans" data-price="159.90" data-material="Tkanina" data-color="Niebieski">
       <figure class="image is-160x160">
         <img class="is-rounded" src="zdjecia_produktow/spodnie1.jpg" alt="Odzież">
         <figcaption class="has-text-centered has-text-weight-bold">Niebieskie skinny jeans</figcaption>
@@ -718,7 +711,7 @@
             <span class="icon"><i class="fas fa-plus"></i></span>
           </button>
           <p class="more-info" style="display: none;" class="is-size-5 has-text-grey-dark mt-3">
-            <b>Materiał:</b> Jeans + elastan
+            <b>Materiał:</b> Denim + elastan
             <br>
             <b>Cena:</b> 159.90 zł
           </p>
@@ -783,7 +776,7 @@
       </figure>
     </div>
     <!-- Produkt 15 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="15" data-name="Karmelowa mini torebka" data-price="229.90" data-material="Skóra ekologiczna" data-color="Brązowy">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="15" data-name="Karmelowa mini torebka" data-price="229.90" data-material="Skóra" data-color="Brązowy">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/torebka6.jpg" alt="Torebki">
         <figcaption class="has-text-centered has-text-weight-bold">Karmelowa mini torebka</figcaption>
@@ -801,7 +794,7 @@
       </figure>
     </div>
     <!-- Produkt 16 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="16" data-name="Czarne botki na platformie" data-price="389.89" data-material="Skóra naturalna" data-color="Czarny">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="16" data-name="Czarne botki na platformie" data-price="389.89" data-material="Skóra" data-color="Czarny">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/botki1.jpg" alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Czarne botki na platformie</figcaption>
@@ -873,7 +866,7 @@
       </figure>
     </div>
     <!-- Produkt 20 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="20" data-name="Biała mini torebka z klamrą" data-price="158.89" data-material="Skóra ekologiczna" data-color="Biały">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="20" data-name="Biała mini torebka z klamrą" data-price="158.89" data-material="Skóra" data-color="Biały">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/torebka7.jpg" alt="Torebki">
         <figcaption class="has-text-centered has-text-weight-bold">Biała mini torebka z klamrą</figcaption>
@@ -891,7 +884,7 @@
       </figure>
     </div>
     <!-- Produkt 21 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="21" data-name="Różowe lakierowane czółenka" data-price="189.90" data-material="Skóra lakierowana" data-color="Różowy">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="21" data-name="Różowe lakierowane czółenka" data-price="189.90" data-material="Skóra" data-color="Różowy">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/czolenka2.jpg" alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Różowe lakierowane czółenka</figcaption>
@@ -909,7 +902,7 @@
       </figure>
     </div>
     <!-- Produkt 22 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="22" data-name="Ciemnoszare spodnie wide leg" data-price="128.90" data-material="Bawełna" data-color="Szary">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="22" data-name="Ciemnoszare spodnie wide leg" data-price="128.90" data-material="Tkanina" data-color="Szary">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/spodnie2.jpg" alt="Odzież">
         <figcaption class="has-text-centered has-text-weight-bold">Ciemnoszare spodnie wide leg</figcaption>
@@ -927,7 +920,7 @@
       </figure>
     </div>
     <!-- Produkt 23 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="23" data-name="Jeansowa torebka ze skórą" data-price="279" data-material="Skóra naturalna" data-color="Niebieski">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="23" data-name="Jeansowa torebka ze skórą" data-price="279" data-material="Skóra" data-color="Niebieski">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/torebka4.jpg" alt="Torebki">
         <figcaption class="has-text-centered has-text-weight-bold">Jeansowa torebka ze skórą</figcaption>
@@ -965,7 +958,7 @@
 
 <!-------------------------------------------PRODUKTY 25-36------------------------------------------------------------>
     <!-- Produkt 25 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="25" data-name="Lakierowane baleriny na obcasie" data-price="199.90" data-material="Skóra lakierowana" data-color="Czerwony">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="25" data-name="Lakierowane baleriny na obcasie" data-price="199.90" data-material="Skóra" data-color="Czerwony">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/lakierki.jpg" alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Lakierowane baleriny na obcasie</figcaption>
@@ -1001,7 +994,7 @@
       </figure>
     </div>
     <!-- Produkt 27 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="27" data-name="Czarna torebka shopperka" data-price="329.90" data-material="Skóra syntetyczna" data-color="Czarny">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="27" data-name="Czarna torebka shopperka" data-price="329.90" data-material="Skóra" data-color="Czarny">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/shopperka.jpg" alt="Torebki">
         <figcaption class="has-text-centered has-text-weight-bold">Czarna torebka shopperka</figcaption>
@@ -1019,7 +1012,7 @@
       </figure>
     </div>
     <!-- Produkt 28 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="28" data-name="Białe sneakersy - niska platforma" data-price="295.89" data-material="Skóra syntetyczna" data-color="Biały">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="28" data-name="Białe sneakersy - niska platforma" data-price="295.89" data-material="Skóra" data-color="Biały">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/sneakersy.jpg" alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Białe sneakersy - niska platforma</figcaption>
@@ -1037,7 +1030,7 @@
       </figure>
     </div>
     <!-- Produkt 29 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="29" data-name="Sukienka mini z falbankami" data-price="119.90" data-material="Poliester" data-color="Niebieski">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="29" data-name="Sukienka mini z falbankami" data-price="119.90" data-material="Tkanina" data-color="Niebieski">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/sukieneczka.jpg" alt="Odzież">
         <figcaption class="has-text-centered has-text-weight-bold">Sukienka mini z falbankami</figcaption>
@@ -1109,7 +1102,7 @@
       </figure>
     </div>
     <!-- Produkt 33 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="33" data-name="Granatowe szpilki z klamerką" data-price="199.90" data-material="Skóra naturalna" data-color="Niebieski">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="33" data-name="Granatowe szpilki z klamerką" data-price="199.90" data-material="Skóra" data-color="Niebieski">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/szpilki3.jpg" alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Granatowe szpilki z klamerką</figcaption>
@@ -1163,7 +1156,7 @@
       </figure>
     </div>
     <!-- Produkt 36 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="36" data-name="Duża torebka granatowa" data-price="299" data-material="Skóra naturalna" data-color="Niebieski">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="36" data-name="Duża torebka granatowa" data-price="299" data-material="Skóra" data-color="Niebieski">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/torebka8.jpg" alt="Torebki">
         <figcaption class="has-text-centered has-text-weight-bold">Duża torebka granatowa</figcaption>
@@ -1201,7 +1194,7 @@
       </figure>
     </div>
     <!-- Produkt 38 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="38" data-name="Karmelowa torebka bagietka" data-price="299" data-material="Skóra naturalna" data-color="Brązowy">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="38" data-name="Karmelowa torebka bagietka" data-price="299" data-material="Skóra" data-color="Brązowy">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/torebka9.jpg" alt="Torebki">
         <figcaption class="has-text-centered has-text-weight-bold">Karmelowa torebka bagietka</figcaption>
@@ -1219,7 +1212,7 @@
       </figure>
     </div>
     <!-- Produkt 39 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="39" data-name="Wysokie trampki z zamszu" data-price="285.90" data-material="Skóra naturalna" data-color="Beżowy">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="39" data-name="Wysokie trampki z zamszu" data-price="285.90" data-material="Skóra" data-color="Beżowy">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/trampki.jpg" alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Wysokie trampki z zamszu</figcaption>
@@ -1237,7 +1230,7 @@
       </figure>
     </div>
     <!-- Produkt 40 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="40" data-name="Różowy kaszkiet z zamszu" data-price="69.90" data-material="Skóra naturalna" data-color="Różowy">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="40" data-name="Różowy kaszkiet z zamszu" data-price="69.90" data-material="Skóra" data-color="Różowy">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/czapka2.jpg" alt="Akcesoria">
         <figcaption class="has-text-centered has-text-weight-bold">Różowy kaszkiet z zamszu</figcaption>
@@ -1255,7 +1248,7 @@
       </figure>
     </div>
     <!-- Produkt 41 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="41" data-name="Wysokie szpilki ze złotem" data-price="699.90" data-material="Skóra syntetyczna" data-color="Czarny">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="41" data-name="Wysokie szpilki ze złotem" data-price="699.90" data-material="Skóra" data-color="Czarny">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/buty.jpg" alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Wysokie szpilki ze złotem</figcaption>
@@ -1273,7 +1266,7 @@
       </figure>
     </div>
     <!-- Produkt 42 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="42" data-name="Koronkowe rękawiczki" data-price="149.90" data-material="Bawełna" data-color="Czarny">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="42" data-name="Koronkowe rękawiczki" data-price="149.90" data-material="Tkanina" data-color="Czarny">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/rekawiczki.jpg" alt="Akcesoria">
         <figcaption class="has-text-centered has-text-weight-bold">Koronkowe rękawiczki</figcaption>
@@ -1291,7 +1284,7 @@
       </figure>
     </div>
     <!-- Produkt 43 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="43" data-name="Kremowa kamizelka" data-price="129.90" data-material="Len" data-color="Beżowy">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="43" data-name="Kremowa kamizelka" data-price="129.90" data-material="Tkanina" data-color="Beżowy">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/kamizelka.jpg" alt="Odzież">
         <figcaption class="has-text-centered has-text-weight-bold">Kremowa kamizelka</figcaption>
@@ -1381,7 +1374,7 @@
       </figure>
     </div>
     <!-- Produkt 48 -->
-    <div class="column is-12-mobile is-4-tablet mb-6" data-id="48" data-name="Koronkowe granatowe szpilki" data-price="199.90" data-material="Bawełna" data-color="Niebieski">
+    <div class="column is-12-mobile is-4-tablet mb-6" data-id="48" data-name="Koronkowe granatowe szpilki" data-price="199.90" data-material="Tkanina" data-color="Niebieski">
       <figure class="image is-160x160">
         <img  src="zdjecia_produktow/koronkowe.jpg" alt="Obuwie">
         <figcaption class="has-text-centered has-text-weight-bold">Koronkowe granatowe szpilki</figcaption>
