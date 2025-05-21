@@ -1,0 +1,292 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+nav.navbar{
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  height:100px;
+}
+
+nav.breadcrumb  a#vearme{
+  color: black;
+}
+
+nav.breadcrumb  a#vearme:hover{
+  color:black;
+  text-decoration: underline;
+}
+
+nav.breadcrumb a#click{
+  color:rgb(78, 78, 78);
+  cursor: default;
+}
+
+.filters {
+  display: flex;
+  gap: 20px;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+}
+
+.button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+
+.dropdown-menu.show {
+  display: block;
+}
+
+
+.dropdown-item input {
+  margin-right: 10px;
+}
+
+#price-range {
+  width: 100%;
+}
+
+ 
+  .dropdown-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  #kolor1{
+    color: red;
+    border: 1px solid black;
+    background-color: red;
+  }
+
+  
+  #kolor2{
+    color: green;
+    border: 1px solid black;
+    background-color: green;
+  }
+
+  
+  #kolor3{
+    color: blue;
+    border: 1px solid black;
+    background-color: blue;
+  }
+
+  
+  #kolor4{
+    color: gold;
+    border: 1px solid black;
+    background-color: gold;
+  }
+
+  
+  #kolor5{
+    color: black;
+    border: 1px solid black;
+    background-color: black;
+  }
+
+  
+  #kolor6{
+    color: white;
+    border: 1px solid black;
+  }
+
+  #kolor7{
+    color: brown;
+    border: 1px solid black;
+    background-color: brown;
+  }
+
+span.konto{
+  color:black;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;  
+  gap: 20px;
+  padding: 20px;
+}
+
+.dropdown {
+  margin-bottom: 20px;
+}
+
+button.button {
+  width: 100%;  
+}
+
+
+.menu {
+  position: fixed;  
+  left: 0; 
+  width: 200px;  
+  height: 1000px; 
+  padding: 20px;
+  background-color: #f4f4f4; 
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);  
+  top: 90px;
+}
+
+.filters {
+  flex-grow: 1; 
+  max-width: 600px;  
+  margin-top: 10px;  
+  margin-left: auto;  
+  margin-right:300px;
+  position:static;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 70px;
+  margin-top: 20px;
+  margin-left: 230px; 
+  margin-bottom: 100px;
+  justify-content: center;
+}
+
+.image-container:hover {
+  transform: scale(1.1); 
+}
+
+
+
+.image-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;     
+  flex: 0 0 30%;
+  position: relative; 
+  transition: transform 0.3s ease;       
+}
+
+.images img {
+  width: 100%;  
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.image-caption {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px; 
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+}
+
+.button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item input {
+  margin-right: 10px;
+}
+
+#price-range {
+  width: 100%;
+}
+
+
+#torebki{
+  background-color: rgb(255, 187, 0);
+  font-weight: bold;
+  color: black;
+}
+
+
+
+.audio {
+  vertical-align: middle; 
+  display: flex;               
+  justify-content: center;    
+  align-items: center;         
+  gap: 10px; 
+  margin-bottom:70px;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blinking-text {
+  animation: blink 2s infinite;
+}
+
+
+
+

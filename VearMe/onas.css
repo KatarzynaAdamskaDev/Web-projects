@@ -1,0 +1,100 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+nav.navbar{
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  height:100px;
+}
+
+#about-us ul {
+  list-style-type: disc; 
+  margin-left: 20px; 
+}
+
+#about-us ol {
+  list-style-type: decimal;
+  margin-left: 20px; 
+}
+
+#about-us li {
+  margin-bottom: 8px; 
+}
+
+#about-us li ul, #about-us li ol {
+  margin-top: 5px; 
+}
+
+
+.columns{
+  background-color: rgb(255, 211, 98);
+  width: 100%;
+  margin: 0;
+}
+
+#p1{
+  font-weight: bold;
+  padding-top: 70px;
+  font-size: 20px;
+}
+
+#p2{
+  font-weight: bold;
+  font-size: 60px;
+  font-family:'Times New Roman', Times, serif;
+}
+
+#p3{
+  font-size: 20px;
+  padding-bottom: 70px;
+}
+
+.columns p{
+  text-align: center;
+  color:black;
+}
+
+.media {
+  margin-top: 20px;
+}
+
+.section {
+  background-image: url('obrazy/tlo.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fff;
+  margin-top: 50px;
+}
+
+h1.title {
+  font-size: 40px;
+  color: white;
+}
+
+h2.subtitle {
+  font-size: 20px;
+  color: white;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.title {
+  animation: blink 2s infinite;
+}
+
+h1.titlee {
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+}

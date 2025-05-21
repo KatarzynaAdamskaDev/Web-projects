@@ -1,0 +1,89 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+nav.navbar{
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  height:100px;
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.text h1 {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.text p {
+  font-size: 30px;
+  margin-top: 10px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.buttonn {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  width: 120px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 30px;
+}
+
+.buttonn span{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  color:black;
+  font-weight: bold;
+}
+
+.buttonn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttonn:hover span {
+  padding-right: 25px;
+}
+
+.buttonn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+figure.image{
+  display: inline-block;  
+  width:100%;
+  margin: 70px 10px 10px 114px;  
+  text-align: center;  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  margin-bottom: 100px;
+  position: relative; 
+  transition: transform 0.3s ease
+}
+
+figure.image:hover {
+  transform: scale(1.1); 
+}
+

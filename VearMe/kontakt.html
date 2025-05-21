@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Katarzyna Adamska">
+    <meta name="description" content="Sklep internetowy podążający za najnowszymi trendami mody.">
+    <meta name="keywords" content="ubrania,outfit,sklep,ciuchy">
+    <title>VearMe I Kontakt</title>
+    <link rel="icon" href="obrazy/logo.png" type="obraz/typ ikony">
+    <link rel="stylesheet" href="kontakt.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<!----------------------------------------------------------------------------------------------------------MENU---------------------------------------------------------------------------------------------------------   -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a href="strona.html">
+      <img width="100" height="200" viewBox="0 0 640 160" fill="none" src="obrazy/logo2.png">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="oferta.html">
+        Oferta
+      </a>
+      <a class="navbar-item" href="kontakt.html">
+        Kontakt
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-item" href="onas.html">
+          O nas
+        </a>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-warning" id="button-przycisk">
+            <span class="icon">
+              <i class="fa-solid fa-user"></i>
+            </span>
+            <span>Konto</span>
+          </a>
+          <a class="button is-dark" id="button-przycisk1">
+            <span class="icon">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </span>
+            <span>Koszyk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+  <!---------------------------------------------------------------------------------------------------BLOK KONTAKT-------------------------------------------------------------------------------------------------------->
+  <div class="columns">
+    <div class="column is-full">
+      <p id="p1">SKONTAKTUJ SIĘ Z NAMI</p>
+      <p id="p2">Kontakt</p>
+      <p id="p3">Jeśli masz potrzebę kontaktu z nami lub potrzebujesz porozmawiać z nami z innych powodów,<br> nie zwlekaj, z chęcią odpowiemy na Twoje pytania:</p>
+    </div>
+  </div>
+
+  <!---------------------------------------------------------------------------------------------------INFORMACJE-------------------------------------------------------------------------------------------------------->
+  <table class="table is-bordered">
+    <tbody>
+        <tr>
+          <td><p id="p4">VearMe Galaxy</p><p>Godziny otwarcia: 10:00-21:00<br>ul.Wyzwolenia 18/20<br>70-554 Szczecin<br>tel.+48 22 17 17 700<br>e-mail: vearmegalaxy@vm.com</p></td>
+          <td><p id="p4">VearMe Kaskada</p><p>Godziny otwarcia: 10:00-21:00<br>ul.Niepodległości 36<br>70-404 Szczecin<br>tel.+48 21 77 27 700<br>e-mail: vearmekaskada@vm.com</p></td>
+        </tr>
+        <tr>
+          <td><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9508.936720852349!2d14.541181787037237!3d53.42852100163673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa091346192373%3A0x7753de96a92e23ab!2sCentrum%20Handlowo-Rozrywkowe%20GALAXY!5e0!3m2!1spl!2spl!4v1732825045254!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+          <td><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2377.2341538903934!2d14.548906577446559!3d53.42852147231327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa091195a47fc5%3A0x596c8c68ba43837e!2sGaleria%20Kaskada!5e0!3m2!1spl!2spl!4v1732824962700!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+        </tr>
+    </tbody>
+  </table>
+
+  <!---------------------------------------------------------------------------------------------------FORMULARZ-------------------------------------------------------------------------------------------------------->
+  <div class="container">
+    <div class="form-container">
+      <div class="field">
+        <label class="label">Imię</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Wpisz swoje imię">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Email*</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-danger" type="email" placeholder="Wpisz swój email">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </span>
+        </div>
+        <p class="help is-danger">*Pole jest wymagane</p>
+      </div>
+  
+      <div class="field">
+        <label class="label">Temat</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>Reklamacje</option>
+              <option>Zwrot</option>
+              <option>Pytanie o produkt</option>
+              <option>Pytanie o zamówienie</option>
+              <option>Inne</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  
+      <div class="field">
+        <label class="label">Treść wiadomości</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="Zadaj nam pytanie"></textarea>
+        </div>
+      </div>
+  
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox">
+            Zapoznałem/am się z <a href="#">regulaminem</a>
+          </label>
+        </div>
+      </div>
+  
+      <div class="field is-grouped">
+        <div class="control" id="button-przycisk2">
+          <button class="button is-warning">Wyślij</button>
+        </div>
+        <div class="control" id="button-przycisk3">
+          <button class="button is-warning is-light">Cofnij</button>
+        </div>
+      </div>
+    </div>
+ 
+    <script>
+      document.getElementById("button-przycisk").addEventListener("click", function() {
+        alert("Zakładka nieaktywna");
+        });
+      document.getElementById("button-przycisk1").addEventListener("click", function(){
+        alert("Zakładka nieaktywna");
+      });
+      document.getElementById("button-przycisk2").addEventListener("click", function(){
+        alert("Przycisk nieaktywny");
+      });
+      document.getElementById("button-przycisk3").addEventListener("click", function(){
+        alert("Przycisk nieaktywny");
+      });
+    </script>
+  <!--------------------------------------------------------------------------------------------------SOCIAL MEDIA------------------------------------------------------------------------------->
+  <div class="social-media">
+    <p id="medias">Obserwuj nas:</p>
+    <span class="social-icon is-info">
+      <i class="fab fa-facebook-f"></i>
+      <span class="title">VearMe</span>
+    </span>
+    <span class="social-icon">
+      <i class="fa-brands fa-tiktok"></i>
+      <span class="title">VearMe</span>
+    </span>
+    <span class="social-icon">
+      <i class="fab fa-instagram"></i>
+      <span class="title">VearMe.brand</span>
+    </span>
+  </div>
+</div>
+
+
+  <!----------------------------------------------------------------------------------------------------STOPKA----------------------------------------------------------------------------------------------------------->
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>VearMe</strong> by Katarzyna Adamska.
+        The source code is licensed
+        <a href="https://opensource.org/license/mit">MIT</a>. The
+        website content is licensed
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0//">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+

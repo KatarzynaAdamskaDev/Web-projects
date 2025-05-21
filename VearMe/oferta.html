@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Katarzyna Adamska">
+    <meta name="description" content="Sklep internetowy podążający za najnowszymi trendami mody.">
+    <meta name="keywords" content="ubrania,outfit,sklep,ciuchy">
+    <title>VearMe I Oferta</title>
+    <link rel="icon" href="obrazy/logo.png" type="obraz/typ ikony">
+    <link rel="stylesheet" href="oferta.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<!----------------------------------------------------------------------------------------------------------MENU---------------------------------------------------------------------------------------------------------   -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a href="strona.html">
+      <img width="100" height="200" viewBox="0 0 640 160" fill="none" src="obrazy/logo2.png">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="oferta.html">
+        Oferta
+      </a>
+      <a class="navbar-item" href="kontakt.html">
+        Kontakt
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-item" href="onas.html">
+          O nas
+        </a>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-warning" id="button-przycisk">
+            <span class="icon">
+              <i class="fa-solid fa-user"></i>
+            </span>
+            <span>Konto</span>
+          </a>
+          <a class="button is-dark" id="button-przycisk1">
+            <span class="icon">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </span>
+            <span>Koszyk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<!----------------------------------------------------------------------------------------------Alignment---------------------------------------------------------------------------------->
+<nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="strona.html" id="vearme">VearMe</a></li>
+    <li><a href="#" id="click">Oferta</a></li>
+  </ul>
+</nav>
+
+
+<!--------------------------------------------------------------------------------------------KATEGORIE------------------------------------------------------------------------------------>
+<div class="container is-mobile">
+  <aside class="menu">
+    <p class="menu-label">Kategoria</p>
+    <ul class="menu-list">
+      <li><a id="torebki">Torebki</a></li>
+      <li><a>Portfele</a></li>
+      <li><a>Perfumy</a></li>
+      <li>
+        <a>Akcesoria</a>
+        <ul>
+          <li><a>Szaliki, chusty i apaszki</a></li>
+          <li><a>Kapelusze i czapki</a></li>
+          <li><a>Rękawiczki</a></li>
+          <li><a>Okulary</a></li>
+          <li><a>Paski</a></li>
+          <li><a>Akcesoria do włosów</a></li>
+        </ul>
+      </li>
+      <li><a>Biżuteria</a></li>
+      <li>
+        <a>Odzież</a>
+        <ul>
+          <li><a>Płaszcze i kurtki</a></li>
+          <li><a>Swetry i koszulki</a></li>
+          <li><a>Koszule</a></li>
+          <li><a>Denim</a></li>
+          <li><a>Sukienki</a></li>
+          <li><a>Spodnie</a></li>
+        </ul>
+      </li>
+      <li><a>Obuwie</a></li>
+    </ul>
+  </aside>
+
+<!----------------------------------------------------------------------------------------------------FILTRY----------------------------------------------------------------------------->
+<div class="filters is-mobile" >
+  <div class="dropdown">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu-sort" onclick="toggleDropdown('dropdown-menu-sort')">
+        <span>SORTUJ</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu-sort" role="menu">
+      <div class="dropdown-content">
+        <label class="dropdown-item">
+          <input type="radio" name="dropdown-sort" value="low-high"> Ceny od najniższej
+        </label>
+        <label class="dropdown-item">
+          <input type="radio" name="dropdown-sort" value="high-low"> Ceny od najwyższej
+        </label>
+        <label class="dropdown-item">
+          <input type="radio" name="dropdown-sort" value="newest"> Najnowsze
+        </label>
+        <hr class="dropdown-divider" />
+        <div class="dropdown-button-container">
+          <button class="button is-warning" id="filter-materials">Sortuj</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="dropdown is-mobile">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu-colors" onclick="toggleDropdown('dropdown-menu-colors')">
+        <span>KOLORY</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu-colors" role="menu">
+      <div class="dropdown-content">
+        <label class="dropdown-item">
+          <input type="checkbox" name="color" value="red"> <i class="fa-solid fa-square" id="kolor1"></i> &nbsp; Czerwony
+        </label>
+        <label class="dropdown-item">
+          <input type="checkbox" name="color" value="green"> <i class="fa-solid fa-square" id="kolor2"></i> &nbsp; Zielony
+        </label>
+        <label class="dropdown-item">
+          <input type="checkbox" name="color" value="blue"> <i class="fa-solid fa-square" id="kolor3"></i> &nbsp;Niebieski
+        </label>
+        <label class="dropdown-item">
+          <input type="checkbox" name="color" value="yellow"> <i class="fa-solid fa-square" id="kolor4"></i> &nbsp;Żółty
+        </label>
+        <label class="dropdown-item">
+          <input type="checkbox" name="color" value="black"> <i class="fa-solid fa-square" id="kolor5"></i> &nbsp;Czarny
+        </label>
+        <label class="dropdown-item">
+          <input type="checkbox" name="color" value="white"> <i class="fa-solid fa-square" id="kolor6"></i> &nbsp;Biały
+        </label>
+        <label class="dropdown-item">
+          <input type="checkbox" name="color" value="white"> <i class="fa-solid fa-square" id="kolor7"></i> &nbsp;Brązowy
+        </label>
+        <hr class="dropdown-divider" />
+        <div class="dropdown-button-container">
+          <button class="button is-warning" id="filter-materials">Zastosuj</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="dropdown">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu-price" onclick="toggleDropdown('dropdown-menu-price')">
+        <span>CENA</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu-price" role="menu">
+      <div class="dropdown-content">
+        <label class="dropdown-item">
+          <input type="range" name="price" min="0" max="10000" value="5000" id="price-range"> 
+          <span id="price-range-value">5000</span> PLN
+        </label>
+        <hr class="dropdown-divider" />
+        <div class="dropdown-button-container">
+          <button class="button is-warning" id="filter-materials">Zastosuj</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="dropdown">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu-material" onclick="toggleDropdown('dropdown-menu-material')">
+        <span>MATERIAŁ</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu-material" role="menu">
+      <div class="dropdown-content">
+        <label class="dropdown-item">
+          <input type="checkbox" name="material" value="cotton"> Skóra naturalna
+        </label>
+        <label class="dropdown-item">
+          <input type="checkbox" name="material" value="leather"> Skóra ekologiczna
+        </label>
+        <label class="dropdown-item">
+          <input type="checkbox" name="material" value="synthetic"> Materiał syntetyczny
+        </label>
+        <hr class="dropdown-divider" />
+        <div class="dropdown-button-container">
+          <button class="button is-warning" id="filter-materials">Zastosuj</button>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="images">
+  <div class="image-container">
+    <img src="obrazy/torebka.jpg" alt="Torebka 1" onclick="showMessage('Torebka 1')">
+    <p class="image-caption">torebka bagietka Yves Saint Laurent</p>
+    <p class="image-caption">6 480,00 zł</p>
+  </div>
+  <div class="image-container">
+    <img src="obrazy/torebka2.jpg" alt="Torebka 2" onclick="showMessage('Torebka 2')">
+    <p class="image-caption">torebka mała wzorzysta Louis Vuitton</p>
+    <p class="image-caption">5 620,00 zł</p>
+  </div>
+  <div class="image-container">
+    <img src="obrazy/torebka4.jpg" alt="Torebka 3" onclick="showMessage('Torebka 3')">
+    <p class="image-caption">torebka bagietka Loewe</p>
+    <p class="image-caption">1 250,00 zł</p>
+  </div>
+</div>
+
+<div class="images">
+  <div class="image-container">
+    <img src="obrazy/torebka5.jpg" alt="Torebka 4" onclick="showMessage('Torebka 4')">
+    <p class="image-caption">torebka ze złotymi cyrkoniami Prada</p>
+    <p class="image-caption">3 197,10 zł</p>
+  </div>
+  <div class="image-container">
+    <img src="obrazy/torebka3.jpg" alt="Torebka 5" onclick="showMessage('Torebka 5')">
+    <p class="image-caption">torebka mini kuferek Louis Vuitton</p>
+    <p class="image-caption">3 983,06 zł</p>
+  </div>
+  <div class="image-container">
+    <img src="obrazy/torebka6.jpg" alt="Torebka 6" onclick="showMessage('Torebka 6')">
+    <p class="image-caption">torebka bagietka Yves Saint Laurent</p>
+    <p class="image-caption">2 380,00 zł</p>
+  </div>
+</div>
+
+<div class="images">
+  <div class="image-container">
+    <img src="obrazy/torebka7.jpg" alt="Torebka 7" onclick="showMessage('Torebka 7')">
+    <p class="image-caption">torebka bagietka Tom Ford</p>
+    <p class="image-caption">5 841,00 zł</p>
+  </div>
+  <div class="image-container">
+    <img src="obrazy/torebka8.jpg" alt="Torebka 8" onclick="showMessage('Torebka 8')">
+    <p class="image-caption">torebka mała ze złotym łańcuszkiem Dolce Gabbana</p>
+    <p class="image-caption">5 680,00 zł</p>
+  </div>
+  <div class="image-container">
+    <img src="obrazy/torebka9.jpg" alt="Torebka 9" onclick="showMessage('Torebka 9')">
+    <p class="image-caption">torebka mała trapezowa Louis Vuitton</p>
+    <p class="image-caption">4 520,00 zł</p>
+  </div>
+</div>
+
+
+<script>
+
+  document.getElementById("button-przycisk").addEventListener("click", function() {
+    alert("Zakładka nieaktywna");
+    });
+  document.getElementById("button-przycisk1").addEventListener("click", function(){
+    alert("Zakładka nieaktywna");
+  });
+ 
+  function toggleDropdown(menuId) {
+    const menu = document.getElementById(menuId);
+    menu.classList.toggle("show");
+  }
+
+ 
+  const priceRange = document.getElementById("price-range");
+  const priceRangeValue = document.getElementById("price-range-value");
+
+  priceRange.addEventListener('input', function() {
+    priceRangeValue.textContent = priceRange.value;
+  });
+
+  document.getElementById("przycisk").addEventListener("click", function(){
+    alert("Przycisk niedziała")
+  })
+
+  function showMessage(name) {
+  alert("Produkt w trakcie dodawania na stronę :)");
+}
+
+</script>
+
+
+<!--------------------------------------------------------------------------------------------AUDIO------------------------------------------------------------------------------------>
+<div class="audio">
+<p class="blinking-text">Umil sobie przeglądanie produktów:</p>
+<audio controls autoplay>
+  <source src="obrazy/sound.mp3" type="audio/ogg">
+  <source src="obrazy/sound.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</div>
+
+
+  <!----------------------------------------------------------------------------------------------------STOPKA----------------------------------------------------------------------------------------------------------->
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>VearMe</strong> by Katarzyna Adamska.
+        The source code is licensed
+        <a href="https://opensource.org/license/mit">MIT</a>. The
+        website content is licensed
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0//">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
