@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="VearMe – Twój sklep online z najnowszymi trendami w modzie. Oferujemy odzież, stylowe obuwie, eleganckie torebki oraz modne akcesoria, które dopełnią każdą stylizację. Odkryj wyjątkowe kolekcje już dziś!">
+      <meta name="keywords" content="odzież, obuwie, torebki, akcesoria, moda, sklep internetowy, VearMe">
+      <meta name="author" content="Julia Fidecka, Katarzyna Adamska">
+      <title>VearMe – Twój styl, Twoje zasady</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+      <link rel="icon" href="assets/VearMe.png" type="obraz/typ ikony">
+      <style>
+        .section-background-image {
+        background-image: url('zdjecia_produktow/onas.png'); 
+        background-size: cover; 
+        background-position: center; 
+        padding: 50px 0;
+        }
+
+
+        #about-us ul {
+        list-style-type: disc; 
+        margin-left: 20px; 
+        }
+
+        #about-us ol {
+        list-style-type: decimal;
+        margin-left: 20px; 
+        }
+
+        #about-us li {
+        margin-bottom: 8px; 
+        }
+
+        #about-us li ul, #about-us li ol {
+        margin-top: 5px; 
+        }
+
+        .section-kom {
+        background-image: url("zdjecia_produktow/tlo_komentarze.jpg"); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: 50px;
+        }
+
+        @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+        }
+        .title-blink {
+        animation: blink 2s infinite;
+        }
+
+        /* ikonka serduszka */
+        .heart-icon {
+        transition: color 0.3s ease;
+        }
+
+        /* Kontener koszyka */
+      .cart-container {
+        position: absolute;
+        top: 60px; 
+        right: 20px;
+        background-color: rgb(255, 255, 255);
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        display: none; 
+        z-index: 1000;
+        border-radius: 10px;
+      }
+
+      /* Dostosowanie dla mniejszych ekranów koszyk */
+      @media screen and (max-width: 768px) {
+        .cart-container {
+          width: 250px; 
+          right: 0px; 
+          top: 50px;   
+        }
+      }
+
+      /* Dostosowanie dla jeszcze mniejszych ekranów koszyk */
+      @media screen and (max-width: 480px) {
+        .cart-container {
+          width: 200px; 
+          right: 5px;  
+          top: 60px;   
+          padding: 15px; 
+        }
+      }
+
+
+      /* Zawartość koszyka */
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Odstęp między elementami w koszyku */
+      #cart-items .cart-item {
+        margin-bottom: 15px; 
+        padding: 10px;
+        margin-top: 15px;
+        border-bottom: 1px solid #ddd; 
+      }
+
+      /* Suma w koszyku */
+      #cart-total {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      /* Wyświetla kontener koszyka */
+      #cart-container.show {
+        display: block; 
+      }
+
+      
+      /* Stylizacja cards */
+      .card{
+          display: inline-block;  
+          width:100%;
+          text-align: center;  
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          position: relative; 
+          transition: transform 0.3s ease;
+          color:black;
+          border: 2px solid rgb(233, 221, 255);
+      }
+
+      .card:hover {
+          transform: scale(1.1); 
+          cursor: pointer;
+      }
+
+      </style>
+    </head>
+<body>
+    
+<!--Menu-->
+  <div>
+    <div class="columns is-grouped-multiline"> </div>
+    <nav class="navbar navigation is-sticky-top has-background-link-light is-spaced" role="navigation" aria-label="main navigation"> 
+      <div class="navbar-brand">
+          <a class="navbar-item has-text-weight-bold is-size-4 mr-6" href="sklep.html">
+            VearMe
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+          </a>
+      </div>
+      <div id="navbarMenu" class="navbar-menu is-size-6 has-text-weight-bold">
+          <div class="navbar-start">
+            <a class="navbar-item" href="Oferta.html">
+              Oferta
+            </a>
+            <a class="navbar-item" href="kontaktVearMe.html">
+              Kontakt
+              </a>
+              <a class="navbar-item" href="Onas.html">
+              O nas
+          </div>
+
+          <div class="navbar-end is-flex is-flex-direction-column-mobile">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-link" id="zakladka-konto">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <strong>Konto</strong>
+                </a>
+                <a class="button is-link" id="show-cart">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-shopping-cart"></i>
+                  </span>
+                  <strong>Koszyk</strong>
+                  <span id="cart-count" class="badge" style="display:none;">(0)</span> <!-- Licznik produktów w nawiasach -->
+                </a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </nav>
+  </div>
+
+ <!-- Kontener koszyka (domyślnie ukryty) -->
+ <div id="cart-container" class="cart-container">
+  <div class="cart-header">
+    <h3 style="font-weight: bold;">Twój koszyk</h3>
+    <button id="close-cart" class="button is-small is-danger" style="font-weight: bold;">Zamknij</button>
+  </div>
+  <div id="cart-items">
+  </div>
+  <div id="cart-total">
+    <p style="margin-bottom:10px;"><b>Suma:</b> <span id="total-price">0 PLN</span></p>
+    <button id="go-to-cart" class="button is-primary" style="font-weight: bold;">Przejdź do koszyka</button>
+  </div>
+</div>
+
+  <!--Blok kontakt-->
+  <div class="columns has-background-light p-6 section-background-image">
+    <div class="column is-full has-text-centered has-text-black" style="line-height: 1.9;">
+      <p class="is-size-5 has-text-weight-bold">DOWIEDZ SIĘ O NAS WIĘCEJ</p>
+      <p class="is-size-1 has-text-weight-bold">O nas</p>
+      <p class="is-size-5">Poznaj naszą markę – elegancja, która definiuje wyjątkowość</p>
+    </div>
+  </div>
+
+  <!--Wyniki-->
+  <nav class="level has-text-black">
+    <div class="level-item has-text-centered" >
+      <div>
+        <p class="heading">Zamówienia</p>
+        <p class="title-blink is-size-3 has-text-weight-bold">3,456</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Produkty w koszyku</p>
+        <p class="title-blink is-size-3 has-text-weight-bold">123</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Klienci</p>
+        <p class="title-blink is-size-3 has-text-weight-bold">456K</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Opinie</p>
+        <p class="title-blink is-size-3 has-text-weight-bold">789</p>
+      </div>
+    </div>
+  </nav>
+
+  <hr>
+
+<!-- Sekcja Informacje o marce -->
+<section class="section has-background-white">
+  <div class="container">
+    <h1 class="title has-text-centered">Nasza historia, misja i wartości</h1>
+    <div class="content">
+      <!-- Historia marki -->
+      <h2 class="subtitle has-text-centered-mobile">Historia marki</h2>
+      <p class="has-text-justified-desktop has-text-centered-mobile">
+        VearMe powstało z potrzeby połączenia funkcjonalności z estetyką. Zaczynając od małego rodzinnego sklepu w 2010 roku, szybko przekształciliśmy się w rozpoznawalną markę, która dostarcza wyjątkowe produkty dla każdego. Nasza pasja do mody oraz dbałość o szczegóły to coś, co wyróżnia nas od samego początku.
+      </p>
+      
+      <hr>
+
+      <!-- Nasza misja -->
+      <h2 class="subtitle has-text-centered-mobile">Nasza misja</h2>
+      <p class="has-text-justified-desktop has-text-centered-mobile">
+        W VearMe wierzymy, że moda powinna być dostępna, unikalna i trwała. Naszą misją jest dostarczanie klientom produktów najwyższej jakości, które nie tylko podkreślają ich indywidualność, ale również wspierają świadome wybory zakupowe. Chcemy, aby każdy klient czuł się wyjątkowo, nosząc nasze ubrania, obuwie i akcesoria.
+      </p>
+
+      <hr>
+
+      <!--Nasze wartości-->
+      <section class="section has-background-white has-text-centered">
+        <div class="container">
+          <h1 class="title has-text-centered">Nasze wartości</h1>
+          <div class="columns is-multiline">
+            <!-- Karta 1 -->
+            <div class="column is-one-third is-full-mobile">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="zdjecia_produktow/jakosc.jpg" alt="Jakość">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <h2 class="title">Jakość</h2>
+                  <p>Nasze produkty to synonim perfekcji, dbałości o szczegóły i trwałości, które przeżyją wiele sezonów.</p>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Karta 2 -->
+            <div class="column is-one-third is-full-mobile">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="zdjecia_produktow/moda.webp" alt="Moda">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <h2 class="title">Moda</h2>
+                  <p>Moda to dla nas sztuka wyrażania siebie. Każdy projekt to zaproszenie do wyrażenia własnej indywidualności.</p>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Karta 3 -->
+            <div class="column is-one-third is-full-mobile">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="zdjecia_produktow/srodowisko.jpg" alt="Zrównoważony rozwój">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <h2 class="title">Zrównoważony rozwój</h2>
+                  <p>Dbamy o naszą planetę, oferując produkty stworzone w zgodzie z naturą i odpowiedzialnością za środowisko.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+      
+      <!-- Twórcy marki -->
+      <h2 class="subtitle has-text-centered-mobile">Poznaj twórców marki</h2>
+      <div class="columns is-vcentered has-text-justified-desktop has-text-centered-mobile" >
+        <div class="column">
+          <p>
+            <strong>Julia Fidecka</strong> oraz <strong>Katarzyna Adamska</strong> to założycielki VearMe. Przyjaciółki, które połączyła pasja do mody i wspólne marzenie o stworzeniu marki, która zaspokoi potrzeby kobiet ceniących styl, jakość i wygodę. 
+          </p>
+          <p>
+            Julia, z wykształcenia projektantka mody, od zawsze interesowała się tworzeniem unikalnych produktów, które łączą funkcjonalność z estetyką. Katarzyna, z kolei, ma wieloletnie doświadczenie w branży sprzedaży i marketingu, co pozwala jej dostrzegać potrzeby rynku i skutecznie komunikować je z klientami.
+          </p>
+          <p>
+            Razem stworzyły markę, która jest nie tylko odzwierciedleniem ich pasji, ale także odpowiedzią na potrzeby współczesnych kobiet. VearMe to synonim elegancji, funkcjonalności i dbałości o każdy szczegół.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sekcja komentarzy -->
+<section class="section-kom  pt-6 pl-5 pb-6 ">
+  <h1 class="is-size-2 has-text-black">KOMENTARZE</h1>
+  <h2 class="subtitle">Co sądzą o nas nasi klienci</h2>
+</section>
+
+  <!--Wpisy-->
+  <article class="media pt-5">
+    <figure class="media-left pl-5">
+      <p class="image is-64x64">
+        <img src="zdjecia_produktow/komentujaca1.jpg"/>
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>Rozalia Kowalska</strong> <small>@RozaliaKowalska</small> <small>31m</small>
+          <br />
+          Świetna jakość produktów, zdecydowanie warte każdej wydanej złotówki. Torebkę, którą zakupiłam na tej stronie 2 lata temu dalej wygląda jak nowa! Zdecydowanie polecam! 
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item like-button">
+            <span class="icon is-small"><i class="fas fa-heart heart-icon"></i></span>
+          </a>
+          <span class="like-count">0</span>
+        </div>
+      </nav>
+    </div>
+</article>
+  <article class="media pt-5">
+    <figure class="media-left pl-5">
+      <p class="image is-64x64">
+        <img src="zdjecia_produktow/komentujaca2.jpg" />
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>Anna Bednarek</strong> <small>@annbednarek</small> <small>31m</small>
+          <br />
+          Początkowo nie byłam przekonana co do jakości produktów z VearMe, natomiast po namowie przez koleżankę na zakup sukienki na uroczystą galę, moje wątpliwości natychmiastowo zostały rozchwiane. Jakość znakomita, rozmiar idealny (i nie oszukany jak na większości stron), a kontakt z firmą jest szybki i sympatyczny. Z całego serca polecam VearMe C:  
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item like-button">
+            <span class="icon is-small"><i class="fas fa-heart heart-icon"></i></span>
+          </a>
+          <span class="like-count">0</span>
+        </div>
+      </nav>
+    </div>
+  </article>
+
+  <!-- Sekcja na nowe komentarze -->
+  <div id="newComments" >
+  </div>
+
+    <!-- Formularz dodawania komentarzy -->
+    <div class="box column is-centered pt-5">
+      <h3 class="title is-4">Dodaj swój komentarz:</h3>
+      <form id="commentForm">
+        <div class="field">
+          <label class="label">Twoje imię</label>
+          <div class="control">
+            <input class="input" type="text" id="userName" placeholder="Wpisz swoje imię" required />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Twój komentarz</label>
+          <div class="control">
+            <textarea class="textarea" id="userComment" placeholder="Wpisz swój komentarz" required></textarea>
+          </div>
+        </div>
+        <div class="control">
+          <button class="button is-link" type="submit">Dodaj komentarz</button>
+        </div>
+      </form>
+    </div>
+
+  <!--Footer-->
+  <footer class="section">
+    <div class="container">
+        <div class="pb-5 is-flex is-flex-wrap-wrap is-justify-content-between is-justify-content-right">
+          <div>
+            <ul class="is-flex is-flex-wrap-wrap is-align-items-center">
+              <li class="mr-4"><a class="button is-white" href="Oferta.html">Oferta</a></li>
+              <li class="mr-4"><a class="button is-white" href="kontaktVearMe.html">Kontakt</a></li>
+              <li class="mr-4"><a class="button is-white" href="Onas.html">O nas</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class="pt-5" style="border-top: 1px solid #dee2e6;"></div>
+    <div class="container">
+      <div class="is-justify-content-between is-align-items-center has-text-centered">
+        <p>© 2025 Julia Fidecka i Katarzyna Adamska - VearMe | Wszystkie prawa zastrzeżone</p>
+        <div class="py-2"></div>
+        <div class="ml-auto">
+          <a class="mr-4 is-inline-block" href="https://www.facebook.com" target="_blank">
+            <img class="image is-32x32" src="assets/Facebook_Logo_Primary.png" alt="Facebook"></a>
+          <a class="mr-4 is-inline-block" href="https://www.instagram.com" target="_blank">
+            <img class="image is-32x32" src="assets/Instagram_Glyph_Gradient.png" alt="Instagram"></a>
+          <a class="is-inline-block" href="https://www.linkedin.com" target="_blank">
+            <img src="assets/LI-In-Bug.png" alt="Linkedin"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<!---toggles the class is-active on both the navbar-burger and the targeted navbar-menu-->
+  <script src="toggle.js">
+  </script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  //Dodanie alertu o niedziałającej zakładce konto
+  document.getElementById('zakladka-konto').addEventListener('click',function(){
+      alert("Zakładka jest jeszcze niedostępna");
+    });
+
+//--------------------------------KOSZYK-------------------------------------
+$(document).ready(function() {
+  // Sprawdzanie czy w localStorage jest zapisany koszyk
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Funkcja do aktualizacji widoku koszyka
+  function updateCartView() {
+    $('#cart-items').empty();
+    let totalPrice = 0;
+
+    cart.forEach((item, index) => {
+      $('#cart-items').append(`
+        <div class="cart-item">
+          <p>${item.name} - ${item.price} PLN
+          <button class="remove-from-cart button is-small " data-index="${index}"><i class="fa-solid fa-trash-can"></i></button></p>
+        </div>
+      `);
+      totalPrice += item.price;
+    });
+
+    $('#total-price').text(totalPrice + " PLN");
+    updateCartCount();
+  }
+
+  // Funkcja do zapisania koszyka do localStorage
+  function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  // Funkcja do aktualizacji licznika produktów w koszyku
+  function updateCartCount() {
+    const count = cart.length; 
+
+    if (count > 0) {
+      $('#cart-count').text(`(${count})`).show();  
+    } else {
+      $('#cart-count').hide(); 
+    }
+  }
+
+  // Funkcja do dodawania produktów do koszyka
+  $('.add-to-cart').on('click', function() {
+    const product = $(this).closest('.column').data();
+
+    // Dodanie produktu do koszyka
+    cart.push({
+      name: product.name,
+      price: parseFloat(product.price)
+    });
+
+    // Zaktualizowanie widoku koszyka
+    updateCartView();
+
+    // Zapisanie koszyka w localStorage
+    saveCartToLocalStorage();
+
+    // Wyświetlanie komunikatu, że produkt został dodany
+    const message = `Produkt ${product.name} został dodany do koszyka!`;
+    $('#cart-notification').text(message).fadeIn().delay(2000).fadeOut();
+  });
+
+  // Funkcja do usuwania produktów z koszyka
+  $(document).on('click', '.remove-from-cart', function() {
+    const index = $(this).data('index');
+    cart.splice(index, 1);
+
+    // Zaktualizowanie widoku koszyka
+    updateCartView();
+
+    // Zapisanie zaktualizowanego koszyka w localStorage
+    saveCartToLocalStorage();
+  });
+
+  // Pokazanie koszyka
+  $('#show-cart').on('click', function() {
+    $('#cart-container').toggleClass('show');
+  });
+
+  // Zamknięcie koszyka
+  $('#close-cart').on('click', function() {
+    $('#cart-container').removeClass('show');
+  });
+
+  // Funkcja "Przejdź do koszyka"
+  document.getElementById('go-to-cart').addEventListener('click',function(){
+    alert("Zakładka jest jeszcze niedostępna");
+  });
+  
+  // Inicjalizacja koszyka z localStorage
+  updateCartView();
+});
+
+// Dodanie komentarza
+  document.getElementById("commentForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Zapobiega przeładowaniu strony
+
+    // Pobieranie wartości z pól formularza
+    const userName = document.getElementById("userName").value;
+    const userComment = document.getElementById("userComment").value;
+
+    // Tworzenie nowego elementu komentarza
+    const commentContainer = document.createElement("article");
+    commentContainer.classList.add("media", "pt-5");
+    commentContainer.innerHTML = `
+      <figure class="media-left pl-5">
+        <p class="image is-64x64">
+          <img src="zdjecia_produktow/avatar.png" alt="Avatar użytkownika" />
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>${userName}</strong> <small>@${userName.toLowerCase()}</small> <small>teraz</small>
+            <br />
+            ${userComment}
+          </p>
+        </div>
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <a class="level-item like-button">
+              <span class="icon is-small"><i class="fas fa-heart heart-icon"></i></span>
+            </a>
+            <span class="like-count">0</span>
+          </div>
+        </nav>
+      </div>
+    `;
+
+    // Dodanie nowego komentarza do sekcji
+    const newCommentsSection = document.getElementById("newComments");
+    newCommentsSection.appendChild(commentContainer);
+
+    // Czyszczenie formularza po dodaniu komentarza
+    document.getElementById("commentForm").reset();
+  });
+
+//--------------------------------SERDUSZKA-------------------------------------
+// Dodajemy nasłuchiwacz do wszystkich serduszek na stronie
+const likeButtons = document.querySelectorAll('.like-button');
+
+likeButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    const heartIcon = this.querySelector('.heart-icon');
+    const likeCount = this.nextElementSibling;
+
+    // Zmieniamy kolor serduszka na czerwony lub czarny
+    heartIcon.style.color = heartIcon.style.color === 'red' ? 'black' : 'red';
+
+    // Zwiększamy lub zmniejszamy licznik polubień
+    let count = parseInt(likeCount.textContent);
+    if (heartIcon.style.color === 'red') {
+        count++;  
+    } else {
+        count--;  
+    }
+
+    // Uaktualniamy wyświetlany licznik
+    likeCount.textContent = count;
+  });
+});
+</script>
+</body>
+</html>

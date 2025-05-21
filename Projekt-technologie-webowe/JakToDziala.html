@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="decription" content="Strona zawierająca informacje jak działa aplikacja DressIT">
+    <meta name="keywords" content="aplikacja, strona internetowa, informacje o działaniu aplikacji, funkcje aplikacji">
+    <meta name="author" content="Julia Fidecka i Katarzyna Adamska">
+    <title>DressIT-działanie</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="icon" href="assets/DressIT.png" type="obraz/typ ikony">
+    <style>
+      .hero{
+        background-color: rgb(224, 224, 247);
+        margin-top:0px;
+      }
+      .card{
+        display:flex;
+        flex-direction: column;
+        background-color: rgb(216, 233, 245);
+      }
+
+      /* animacja tytułu */
+      #tytul{
+        opacity: 0;
+        animation: fadeInOut 3s ease-in-out infinite; 
+      }
+
+      @keyframes fadeInOut {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 1; 
+          }
+          100% {
+            opacity: 0; 
+          }
+        }
+
+        /* Style bloków krok po kroku */
+        #sprawdz:hover {
+          background-color: #b9d1db; 
+          transform: scale(1.1); 
+        }
+
+        #sprawdz {
+        transition: transform 0.3s ease;
+        }
+        .cell {
+          margin-left: 30px;
+        }
+
+        @media (max-width: 768px) {
+          .cell {
+            margin-left: 15px;
+          }
+        }
+    </style>
+  </head>
+  <body>
+
+  <!--Menu-->
+  <div>
+    <div class="columns is-grouped-multiline"> </div>
+    <nav class="navbar navigation is-sticky-top has-background-link-light is-spaced" role="navigation" aria-label="main navigation"> 
+      <div class="navbar-brand">
+          <a class="navbar-item has-text-weight-bold is-size-4 mr-6" href="DressIT.html">
+            DressIT
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+          </a>
+      </div>
+      <div id="navbarMenu" class="navbar-menu is-size-6 has-text-weight-bold">
+        <a class="navbar-item" href="JakToDziala.html">
+          Działanie
+        </a>
+        <a class="navbar-item" href="Cennik.html">
+          Cennik
+        </a>
+        <a class="navbar-item" href="Faq.html">
+          FAQ
+        </a>
+        <a class="navbar-item" href="sklep.html">
+          Sklep VearMe
+        </a>
+      </div>
+
+          <div class="navbar-end is-flex is-flex-direction-column-mobile">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-link" href="kontakt.html">
+                  <strong>Kontakt</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Sekcja nagłówka -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title" id="tytul">
+          Jak działa DressIT?
+        </h1>
+        <h2 class="subtitle mt-5">
+          Prosta instrukcja, jak korzystać z aplikacji DressIT.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Główna sekcja strony -->
+<section class="section">
+  <div class="container">
+    <div class="content has-text-centered">
+      <h2 class="section-title title is-3">Krok po kroku</h2>
+    </div>
+
+    <div class="fixed-grid has-3-cols has-1-cols-mobile has-2-cols-tablet">
+      <div class="grid">
+        <div class="cell" style="margin-bottom: 30px;"> 
+          <div class="card">
+            <div class="card-content" id="sprawdz">
+              <p class="title is-4">
+                <span class="icon">
+                  <i class="fas fa-user"></i>
+                </span>
+                1. Utwórz Konto
+              </p>
+              <p>
+                Zarejestruj się w aplikacji DressIT, aby uzyskać dostęp do wszystkich funkcji. Wystarczy kilka prostych kroków!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell" style="margin-bottom: 30px;"> 
+          <div class="card">
+            <div class="card-content" id="sprawdz">
+              <p class="title is-4">
+                <span class="icon">
+                  <i class="fas fa-camera"></i>
+                </span>
+                2. Dodaj Zdjęcie Ubrania
+              </p>
+              <p>
+                Wybierz zdjęcie ubrania, które chcesz sprzedać lub wypróbować. Możesz dodać zdjęcie bezpośrednio z telefonu lub komputera.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell" style="margin-bottom: 30px;"> 
+          <div class="card">
+            <div class="card-content" id="sprawdz" >
+              <p class="title is-4">
+                <span class="icon">
+                  <i class="fas fa-male"></i>
+                </span>
+                3. Wybierz Modela/Modelkę
+              </p>
+              <p>
+                Wybierz sylwetkę modela lub modelki, na której chcesz wypróbować ubranie. Możesz dostosować wygląd modela do swoich preferencji.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell" style="margin-bottom: 30px;"> 
+          <div class="card">
+            <div class="card-content" id="sprawdz">
+              <p class="title is-4">
+                <span class="icon">
+                  <i class="fas fa-edit"></i>
+                </span>
+                4. Dopasuj Ubranie
+              </p>
+              <p>
+                Dzięki naszej technologii sztucznej inteligencji, ubranie zostanie automatycznie dopasowane do wybranego modela. Możesz także edytować i dostosować położenie.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell" style="margin-bottom: 30px;">
+          <div class="card">
+            <div class="card-content" id="sprawdz">
+              <p class="title is-4">
+                <span class="icon">
+                  <i class="fas fa-share-alt"></i>
+                </span>
+                5. Podziel się Efektem
+              </p>
+              <p>
+                Gdy jesteś zadowolony z efektu, możesz podzielić się zdjęciem w mediach społecznościowych lub pobrać je na swoje urządzenie.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"> 
+          <div class="card">
+            <div class="card-content" id="sprawdz">
+              <p class="title is-4">
+                <span class="icon">
+                  <i class="fas fa-shopping-cart"></i>
+                </span>
+                6. Wystaw na Vinted
+              </p>
+              <p>
+                Jeżeli Twoje ubranie wygląda idealnie na modelu, przejdź na Vinted i wystaw je na sprzedaż bezpośrednio z aplikacji DressIT.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!--Footer-->
+  <footer class="section" style="padding-top:0px;">
+    <div class="container">
+        <div class="pb-5 is-flex is-flex-wrap-wrap is-justify-content-between is-justify-content-right">
+          <div>
+            <ul class="is-flex is-flex-wrap-wrap is-align-items-center">
+              <li class="mr-4"><a class="button is-white" href="JakToDziala.html">Działanie</a></li>
+              <li class="mr-4"><a class="button is-white" href="Cennik.html">Cennik</a></li>
+              <li class="mr-4"><a class="button is-white" href="Faq.html">FAQ</a></li>
+              <li class="mr-4"><a class="button is-white" href="sklep.html">Sklep VearMe</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class="pt-5" style="border-top: 1px solid #dee2e6;"></div>
+    <div class="container">
+      <div class="is-justify-content-between is-align-items-center has-text-centered">
+        <p>© 2025 Julia Fidecka i Katarzyna Adamska - DressIT | Wszystkie prawa zastrzeżone</p>
+        <div class="py-2"></div>
+        <div class="ml-auto">
+          <a class="mr-4 is-inline-block" href="https://www.facebook.com" target="_blank">
+            <img class="image is-32x32" src="assets/Facebook_Logo_Primary.png" alt="Facebook"></a>
+          <a class="mr-4 is-inline-block" href="https://www.instagram.com" target="_blank">
+            <img class="image is-32x32" src="assets/Instagram_Glyph_Gradient.png" alt="Instagram"></a>
+          <a class="is-inline-block" href="https://www.linkedin.com" target="_blank">
+            <img src="assets/LI-In-Bug.png" alt="Linkedin"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!---toggles the class is-active on both the navbar-burger and the targeted navbar-menu-->
+  <script src="toggle.js"></script>
+
+  </body>
+</html>

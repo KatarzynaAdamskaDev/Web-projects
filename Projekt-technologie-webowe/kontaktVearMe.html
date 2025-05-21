@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="VearMe – Twój sklep online z najnowszymi trendami w modzie. Oferujemy odzież, stylowe obuwie, eleganckie torebki oraz modne akcesoria, które dopełnią każdą stylizację. Odkryj wyjątkowe kolekcje już dziś!">
+      <meta name="keywords" content="odzież, obuwie, torebki, akcesoria, moda, sklep internetowy, VearMe">
+      <meta name="author" content="Julia Fidecka, Katarzyna Adamska">
+      <title>VearMe – Twój styl, Twoje zasady</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+      <link rel="icon" href="assets/VearMe.png" type="obraz/typ ikony">
+        <style>
+        /* -------------------------- Kontener koszyka ------------------------------ */
+        .cart-container {
+          position: absolute;
+          top: 60px; 
+          right: 20px; 
+          background-color: rgb(255, 255, 255);
+          padding: 20px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          width: 300px;
+          display: none; 
+          z-index: 1000;
+          border-radius: 10px;
+        }
+        
+        /* Dostosowanie dla mniejszych ekranów */
+        @media screen and (max-width: 768px) {
+          .cart-container {
+            width: 250px;
+            right: 0px;  
+            top: 50px;  
+          }
+        }
+        
+        /* Dostosowanie dla jeszcze mniejszych ekranów */
+        @media screen and (max-width: 480px) {
+          .cart-container {
+            width: 200px;
+            right: 5px;   
+            top: 60px;    
+            padding: 15px; 
+          }
+        }
+        
+        /* Zawartość koszyka */
+        .cart-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        /* Dodaj odstęp między elementami w koszyku */
+        #cart-items .cart-item {
+          margin-bottom: 15px; 
+          padding: 10px;
+          margin-top: 15px;
+          border-bottom: 1px solid #ddd;
+        }
+        
+        #cart-total {
+          margin-top: 20px;
+          text-align: center;
+        }
+        
+        #cart-container.show {
+          display: block; 
+        }
+        </style>
+    </head>
+<body>
+<!--Menu-->
+  <div>
+    <div class="columns is-grouped-multiline"> </div>
+    <nav class="navbar navigation is-sticky-top has-background-link-light is-spaced" role="navigation" aria-label="main navigation"> 
+      <div class="navbar-brand">
+          <a class="navbar-item has-text-weight-bold is-size-4 mr-6" href="sklep.html">
+            VearMe
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+          </a>
+      </div>
+      <div id="navbarMenu" class="navbar-menu is-size-6 has-text-weight-bold">
+          <div class="navbar-start">
+            <a class="navbar-item" href="Oferta.html">
+              Oferta
+            </a>
+            <a class="navbar-item" href="kontaktVearMe.html">
+              Kontakt
+              </a>
+              <a class="navbar-item" href="Onas.html">
+              O nas
+          </div>
+
+          <div class="navbar-end is-flex is-flex-direction-column-mobile">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-link" id="zakladka-konto">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <strong>Konto</strong>
+                </a>
+                <a class="button is-link" href="koszyk.html">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-shopping-cart"></i>
+                  </span>
+                  <strong>Koszyk</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </nav>
+  </div>
+
+  <!--Formularz kontaktowy-->
+  <section class="section">
+    <div class="container">
+      <div class="column is-9">
+        <div class="p-6 shadow rounded content">
+          <h2 class="section-title">Formularz kontaktowy</h2>
+          <form action="mailto:241194@stud.usz.edu.pl" method="post">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Dane kontaktowe</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is expanded has-icons-left">
+                            <input class="input is-link is-rounded" type="text" name="imie" placeholder="Wpisz imię" required>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control is expanded has-icons-left">
+                            <input class="input is-link is-rounded" type="text" name="nazwisko" placeholder="Wpisz nazwisko" required>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field has-addons">
+                        <p class="control is-expanded has-icons-left has-icons-right">
+                          <input class="input is-success is-rounded" type="text" name="email" placeholder="Wpisz email" required>
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                          <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                          </span>
+                        </p>
+                        <p class="control">
+                            <a class="button is-static">
+                                @gmail.com
+                            </a>
+                        </p>
+                      </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label"></div>
+                <div class="field-body">
+                  <div class="field is-expanded">
+                    <div class="field has-addons">
+                      <p class="control">
+                        <a class="button is-static">
+                          +48
+                        </a>
+                      </p>
+                      <p class="control is-expanded">
+                        <input class="input is-rounded" type="tel" name="numerTelefonu" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" title="9 cyfr w postaci 000-000-000" maxlength="11" placeholder="Wpisz numer telefonu" required>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Temat</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <input class="input is-danger is-rounded" type="text"  name="tematWiadomosci" placeholder="np. Współpraca" required>
+                    </div>
+                    <p class="help is-danger">
+                      Pole jest wymagane
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Treść wiadomości</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <textarea class="textarea is-link" name="trescWiadomosci" placeholder="Wyjaśnij, jak możemy Ci pomóc" rows="10" required></textarea>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                  <label class="checkbox is-rounded">
+                    <input type="checkbox" name="warunkiIpostanowienia" required>
+                    Zgadzam się z warunkami i postanowieniami
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label">
+                </div>
+                <div class="field-body">
+                    <div class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                            <button type="submit" class="button is-link">
+                                Wyślij wiadomość
+                            </button>
+                        </p>
+                        <p class="control">
+                            <button type="reset" class="button is-link is-light">
+                                Anuluj
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!---Informacje kontaktowe-->
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-half">
+          <div class="p-6 shadow rounded content">
+          <h2 class="section-title">Informacje kontaktowe</h2>
+          <dl>
+            <span class="icon-text pt-5">
+              <span class="icon">
+                <i class="fas fa-home"></i>
+              </span>
+              <dt>Adres</dt>
+            </span>
+            <dd>ul.Aleja Niepodległości 36, 70-404 Szczecin</dd>
+            <hr>
+            <span class="icon-text">
+              <span class="icon">
+                <i class="fas fa-phone"></i>
+              </span>
+              <dt>Numer Telefonu</dt>
+            </span>
+            <dd>987-654-321</dd>
+            <hr>
+            <span class="icon-text">
+              <span class="icon">
+                <i class="fas fa-envelope-open-text"></i>
+              </span>
+              <dt>E-mail</dt>
+            </span>
+            <dd>kontakt@vearMe.pl</dd>
+          </dl>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="p-6 shadow rounded content">
+          <h2 class="section-title">Nasza lokalizacja</h2>
+            <div class="map-container pt-3">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2377.234153890396!2d14.548906576885356!3d53.42852147231323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa091195a47fc5%3A0x596c8c68ba43837e!2sGaleria%20Kaskada!5e0!3m2!1spl!2spl!4v1737549512147!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Footer-->
+  <footer class="section">
+    <div class="container">
+        <div class="pb-5 is-flex is-flex-wrap-wrap is-justify-content-between is-justify-content-right">
+          <div>
+            <ul class="is-flex is-flex-wrap-wrap is-align-items-center">
+              <li class="mr-4"><a class="button is-white" href="Oferta.html">Oferta</a></li>
+              <li class="mr-4"><a class="button is-white" href="kontaktVearMe.html">Kontakt</a></li>
+              <li class="mr-4"><a class="button is-white" href="Onas.html">O nas</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class="pt-5" style="border-top: 1px solid #dee2e6;"></div>
+    <div class="container">
+      <div class="is-justify-content-between is-align-items-center has-text-centered">
+        <p>© 2025 Julia Fidecka i Katarzyna Adamska - VearMe | Wszystkie prawa zastrzeżone</p>
+        <div class="py-2"></div>
+        <div class="ml-auto">
+          <a class="mr-4 is-inline-block" href="https://www.facebook.com" target="_blank">
+            <img class="image is-32x32" src="assets/Facebook_Logo_Primary.png" alt="Facebook"></a>
+          <a class="mr-4 is-inline-block" href="https://www.instagram.com" target="_blank">
+            <img class="image is-32x32" src="assets/Instagram_Glyph_Gradient.png" alt="Instagram"></a>
+          <a class="is-inline-block" href="https://www.linkedin.com" target="_blank">
+            <img src="assets/LI-In-Bug.png" alt="Linkedin"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<!---toggles the class is-active on both the navbar-burger and the targeted navbar-menu-->
+  <script src="toggle.js">
+  </script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  //Dodanie alertu o niedziałającej zakładce konto
+  document.getElementById('zakladka-konto').addEventListener('click',function(){
+      alert("Zakładka jest jeszcze niedostępna");
+    });
+
+    //---------------------------------------KOSZYK-----------------------------------------------
+$(document).ready(function() {
+  // Sprawdzamy, czy w localStorage jest zapisany koszyk
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Funkcja do aktualizacji widoku koszyka
+  function updateCartView() {
+    $('#cart-items').empty();
+    let totalPrice = 0;
+
+    cart.forEach((item, index) => {
+      $('#cart-items').append(`
+        <div class="cart-item">
+          <p>${item.name} - ${item.price} PLN
+          <button class="remove-from-cart button is-small " data-index="${index}"><i class="fa-solid fa-trash-can"></i></button></p>
+        </div>
+      `);
+      totalPrice += item.price;
+    });
+
+    $('#total-price').text(totalPrice + " PLN");
+    updateCartCount();  // Zaktualizowanie licznika
+  }
+
+  // Funkcja do zapisania koszyka do localStorage
+  function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  // Funkcja do aktualizacji licznika produktów w koszyku
+  function updateCartCount() {
+    const count = cart.length;
+
+    if (count > 0) {
+      $('#cart-count').text(`(${count})`).show();  
+    } else {
+      $('#cart-count').hide();  
+    }
+  }
+
+  // Funkcja do dodawania produktów do koszyka
+  $('.add-to-cart').on('click', function() {
+    const product = $(this).closest('.column').data();
+
+    // Dodanie produktu do koszyka
+    cart.push({
+      name: product.name,
+      price: parseFloat(product.price)
+    });
+
+    // Zaktualizowanie widoku koszyka
+    updateCartView();
+
+    // Zapisanie koszyka w localStorage
+    saveCartToLocalStorage();
+
+    // Wyświetlanie komunikatu, że produkt został dodany
+    const message = `Produkt ${product.name} został dodany do koszyka!`;
+    $('#cart-notification').text(message).fadeIn().delay(2000).fadeOut();
+  });
+
+  // Funkcja do usuwania produktów z koszyka
+  $(document).on('click', '.remove-from-cart', function() {
+    const index = $(this).data('index');
+    cart.splice(index, 1);
+
+    // Zaktualizowanie widoku koszyka
+    updateCartView();
+
+    // Zapisanie zaktualizowanego koszyka w localStorage
+    saveCartToLocalStorage();
+  });
+
+  // Pokazanie koszyka
+  $('#show-cart').on('click', function() {
+    $('#cart-container').toggleClass('show');
+  });
+
+  // Zamknięcie koszyka
+  $('#close-cart').on('click', function() {
+    $('#cart-container').removeClass('show');
+  });
+
+  // Funkcja "Przejdź do koszyka"
+  document.getElementById('go-to-cart').addEventListener('click',function(){
+    alert("Zakładka jest jeszcze niedostępna");
+  });
+  
+  // Inicjalizacja koszyka z localStorage (jeśli istnieje)
+  updateCartView();
+});
+</script>
+</body>
+</html>

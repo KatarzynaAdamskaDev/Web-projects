@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="decription" content="Strona zawierająca najczęstsze pytania i odpowiedzi ">
+        <meta name="keywords" content="aplikacja, strona internetowa, FAQ, pytania i odpowiedzi">
+        <meta name="author" content="Julia Fidecka i Katarzyna Adamska">
+        <title>DressIT-FAQ</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link rel="icon" href="assets/DressIT.png" type="obraz/typ ikony">
+  </head>
+  <body>
+  <!--Menu-->
+  <div>
+    <div class="columns is-grouped-multiline"> </div>
+    <nav class="navbar navigation is-sticky-top has-background-link-light is-spaced" role="navigation" aria-label="main navigation"> 
+      <div class="navbar-brand">
+          <a class="navbar-item has-text-weight-bold is-size-4 mr-6" href="DressIT.html">
+            DressIT
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+          </a>
+      </div>
+      <div id="navbarMenu" class="navbar-menu is-size-6 has-text-weight-bold">
+          <div class="navbar-start">
+            <a class="navbar-item" href="JakToDziala.html">
+              Działanie
+            </a>
+            <a class="navbar-item" href="Cennik.html">
+              Cennik
+            </a>
+            <a class="navbar-item" href="Faq.html">
+              FAQ
+            </a>
+            <a class="navbar-item" href="sklep.html">
+              Sklep VearMe
+            </a>
+          </div>
+
+          <div class="navbar-end is-flex is-flex-direction-column-mobile">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-link" href="kontakt.html">
+                  <strong>Kontakt</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <!--FAQ-->
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+    
+          <div class="column is-7">
+            <h1 class="title is-2 has-text-link-85">Najczęściej zadawane pytania (FAQ)</h1>
+
+            <div class="content">
+    
+              <!-- Pytanie 1 -->
+              <div class="card mb-4">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Czym jest DressIT?
+                  </p>
+                  <button class="card-header-icon" aria-label="more options" onclick="toggleAnswer('answer1')">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </header>
+                <div id="answer1" class="card-content is-hidden">
+                  <div class="content">
+                    DressIT to narzędzie wykorzystujące sztuczną inteligencję do prezentowania ubrań w najbardziej atrakcyjny sposób. Aplikacja umożliwia „ubieranie” wybranego modela w załadowane przez użytkownika ubrania, co pomaga lepiej przedstawić produkty i przyciągnąć uwagę klientów, zwiększając szansę na sprzedaż.
+                  </div>
+                </div>
+              </div>
+    
+              <!-- Pytanie 2 -->
+              <div class="card mb-4">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Jak działa technologia DressIT?
+                  </p>
+                  <button class="card-header-icon" aria-label="more options" onclick="toggleAnswer('answer2')">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </header>
+                <div id="answer2" class="card-content is-hidden">
+                  <div class="content">
+                    DressIT korzysta z zaawansowanej technologii sztucznej inteligencji, aby realistycznie wizualizować Twoje ubrania na wirtualnych modelach. Wystarczy załadować zdjęcie ubrania, a nasza technologia automatycznie dopasuje je do modela, tworząc profesjonalnie wyglądające zdjęcie gotowe do publikacji.
+                  </div>
+                </div>
+              </div>
+    
+              <!-- Pytanie 3 -->
+              <div class="card mb-4">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Jakie korzyści daje korzystanie z DressIT?
+                  </p>
+                  <button class="card-header-icon" aria-label="more options" onclick="toggleAnswer('answer3')">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </header>
+                <div id="answer3" class="card-content is-hidden">
+                  <div class="content">
+                    Dzięki DressIT możesz w prosty sposób zwiększyć zainteresowanie swoimi produktami. Lepsza prezentacja ubrań przyciąga uwagę klientów, co prowadzi do większej liczby zakupów. Oferujemy narzędzia do tworzenia inspirujących wizualizacji, które pomogą Ci wyróżnić się na tle konkurencji.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pytanie 4 -->
+              <div class="card mb-4">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Jakie zdjęcia mogę załadować do aplikacji?
+                  </p>
+                  <button class="card-header-icon" aria-label="more options" onclick="toggleAnswer('answer4')">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </header>
+                <div id="answer4" class="card-content is-hidden">
+                  <div class="content">
+                    DressIT obsługuje różne rodzaje zdjęć ubrań - mogą to być zdjęcia produktów na białym tle, płaskie zdjęcia, czy zdjęcia na manekinach. Nasza technologia najlepiej działa z wysokiej jakości zdjęciami w formacie JPG lub PNG.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pytanie 5 -->
+              <div class="card mb-4">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Czy DressIT jest kompatybilne z platformami sprzedażowymi, takimi jak Vinted?
+                  </p>
+                  <button class="card-header-icon" aria-label="more options" onclick="toggleAnswer('answer5')">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </header>
+                <div id="answer5" class="card-content is-hidden">
+                  <div class="content">
+                    Tak, zdjęcia wygenerowane przez DressIT są gotowe do załadowania na wszystkie popularne platformy sprzedażowe, takie jak Vinted, eBay, Allegro czy Etsy. Dzięki realistycznym wizualizacjom Twoje produkty będą się wyróżniać wśród innych ofert.
+                  </div>
+                </div>
+              </div>
+    
+              <!-- Pytanie 6 -->
+              <div class="card mb-4">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Ile kosztuje korzystanie z DressIT?
+                  </p>
+                  <button class="card-header-icon" aria-label="more options" onclick="toggleAnswer('answer6')">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </header>
+                <div id="answer6" class="card-content is-hidden">
+                  <div class="content">
+                    DressIT oferuje trzy różne plany, dostosowane do Twoich potrzeb:
+                    <ul>
+                      <li><strong>Free:</strong> Wersja testowa dostępna przez 7 dni za darmo. Pozwala na pełne zapoznanie się z podstawowymi funkcjami aplikacji.</li>
+                      <li><strong>Basic:</strong> 29 zł miesięcznie - idealny dla osób prywatnych i małych sklepów. Oferuje rozszerzony zestaw narzędzi wspomagających sprzedaż.</li>
+                      <li><strong>Pro:</strong> 59 zł miesięcznie - dla profesjonalistów, którzy chcą maksymalnie zwiększyć efektywność sprzedaży.</li>
+                    </ul>
+                    Aby uzyskać więcej informacji o dostępnych funkcjach i korzyściach dla każdego planu, odwiedź naszą sekcję <a href="Cennik.html">Cennik</a>.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pytanie 7 -->
+              <div class="card mb-4">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Jak mogę skontaktować się z pomocą techniczną?
+                  </p>
+                  <button class="card-header-icon" aria-label="more options" onclick="toggleAnswer('answer7')">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </header>
+                <div id="answer7" class="card-content is-hidden">
+                  <div class="content">
+                    Jeśli masz pytania lub napotkałeś problem, nasz zespół wsparcia jest do Twojej dyspozycji. Skontaktuj się z nami przez formularz kontaktowy dostępny na stronie lub napisz bezpośrednio na adres email: kontakt@dressit.pl.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pytanie 8 -->
+              <div class="card mb-4">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Jak mogę zrezygnować z subskrypcji DressIT?
+                  </p>
+                  <button class="card-header-icon" aria-label="more options" onclick="toggleAnswer('answer8')">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </header>
+                <div id="answer8" class="card-content is-hidden">
+                  <div class="content">
+                    Możesz zrezygnować z subskrypcji w dowolnym momencie, kontaktując się z naszym działem obsługi klienta lub poprzez formularz dostępny w zakładce "Kontakt". W razie problemów, nasz zespół wsparcia chętnie Ci pomoże.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stopka kontaktowa -->
+              <div class="box has-text-centered mt-5">
+                <p class="is-size-5 has-text-weight-bold">Masz więcej pytań?</p>
+                <p>Skontaktuj się z nami pod adresem email: <a href="mailto:kontakt@dressit.pl">kontakt@dressit.pl</a></p>
+              </div>
+    
+            </div>
+          </div>
+    
+          <!-- Prawa kolumna - Zdjęcie -->
+          <div class="column is-5">
+            <figure class="image is-4by5">
+              <iframe class="has-ratio" src="assets/faq_video.mp4" alt="Film "></iframe>
+            </figure>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+
+  <!--Footer-->
+  <footer class="section">
+    <div class="container">
+        <div class="pb-5 is-flex is-flex-wrap-wrap is-justify-content-between is-justify-content-right">
+          <div>
+            <ul class="is-flex is-flex-wrap-wrap is-align-items-center">
+              <li class="mr-4"><a class="button is-white" href="JakToDziala.html">Działanie</a></li>
+              <li class="mr-4"><a class="button is-white" href="Cennik.html">Cennik</a></li>
+              <li class="mr-4"><a class="button is-white" href="Faq.html">FAQ</a></li>
+              <li class="mr-4"><a class="button is-white" href="sklep.html">Sklep VearMe</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class="pt-5" style="border-top: 1px solid #dee2e6;"></div>
+    <div class="container">
+      <div class="is-justify-content-between is-align-items-center has-text-centered">
+        <p>© 2025 Julia Fidecka i Katarzyna Adamska - DressIT | Wszystkie prawa zastrzeżone</p>
+        <div class="py-2"></div>
+        <div class="ml-auto">
+          <a class="mr-4 is-inline-block" href="https://www.facebook.com" target="_blank">
+            <img class="image is-32x32" src="assets/Facebook_Logo_Primary.png" alt="Facebook"></a>
+          <a class="mr-4 is-inline-block" href="https://www.instagram.com" target="_blank">
+            <img class="image is-32x32" src="assets/Instagram_Glyph_Gradient.png" alt="Instagram"></a>
+          <a class="is-inline-block" href="https://www.linkedin.com" target="_blank">
+            <img src="assets/LI-In-Bug.png" alt="Linkedin"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!---toggles the class is-active on both the navbar-burger and the targeted navbar-menu-->
+    <script src="toggle.js"></script>
+
+    
+    <!-- JavaScript to handle toggling the answers -->
+  <script>
+    function toggleAnswer(answerId) {
+      const answer = document.getElementById(answerId);
+      answer.classList.toggle('is-hidden');
+    }
+  </script>
+  </body>
+</html>

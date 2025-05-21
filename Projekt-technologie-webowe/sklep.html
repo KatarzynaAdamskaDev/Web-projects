@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="VearMe – Twój sklep online z najnowszymi trendami w modzie. Oferujemy odzież, stylowe obuwie, eleganckie torebki oraz modne akcesoria, które dopełnią każdą stylizację. Odkryj wyjątkowe kolekcje już dziś!">
+      <meta name="keywords" content="odzież, obuwie, torebki, akcesoria, moda, sklep internetowy, VearMe">
+      <meta name="author" content="Julia Fidecka, Katarzyna Adamska">
+      <title>VearMe – Twój styl, Twoje zasady</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+      <link rel="icon" href="assets/VearMe.png" type="obraz/typ ikony">
+      <style>
+          .video-container {
+          position: relative;
+          width: 100%;
+          height: 50vh;
+          overflow: hidden;
+          }
+
+          .video-container video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+          }
+
+          .overlay {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          z-index: 2;
+          }
+
+          .overlay h1 {
+          font-size: 4rem;
+          }
+
+          .overlay p {
+          font-size: 1.5rem;
+          }
+          
+        figure.image{
+          display: inline-block;  
+          width:100%;
+          text-align: center;  
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          border-radius: 50%;
+          position: relative; 
+          transition: transform 0.3s ease;
+          color:black;
+          border: 2px solid rgb(233, 221, 255);
+        }
+
+        figure.image:hover {
+          transform: scale(1.2); 
+          cursor: pointer;
+        }
+
+        /* Style przycisku ,,Sprawdz" */
+        #sprawdz:hover {
+          background-color: #cccccc; 
+          transform: scale(1.2); 
+          cursor: pointer;
+        }
+
+        #sprawdz {
+        transition: transform 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animacja tekstu ,,Nowosc" */
+        #fade-in {
+          opacity: 0;
+          animation: fadeInOut 3s ease-in-out infinite; 
+          }
+
+        @keyframes fadeInOut {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 1; 
+          }
+          100% {
+            opacity: 0; 
+          }
+        }
+        
+        /* -------------------------- Kontener koszyka ------------------------------ */
+        .cart-container {
+          position: absolute;
+          top: 60px; 
+          right: 20px; 
+          background-color: rgb(255, 255, 255);
+          padding: 20px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          width: 300px;
+          display: none; 
+          z-index: 1000;
+          border-radius: 10px;
+        }
+        
+        /* Dostosowanie dla mniejszych ekranów */
+        @media screen and (max-width: 768px) {
+          .cart-container {
+            width: 250px;
+            right: 0px;  
+            top: 50px;  
+          }
+        }
+        
+        /* Dostosowanie dla jeszcze mniejszych ekranów */
+        @media screen and (max-width: 480px) {
+          .cart-container {
+            width: 200px;
+            right: 5px;   
+            top: 60px;    
+            padding: 15px; 
+          }
+        }
+        
+        /* Zawartość koszyka */
+        .cart-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        /* Dodaj odstęp między elementami w koszyku */
+        #cart-items .cart-item {
+          margin-bottom: 15px; 
+          padding: 10px;
+          margin-top: 15px;
+          border-bottom: 1px solid #ddd;
+        }
+        
+        #cart-total {
+          margin-top: 20px;
+          text-align: center;
+        }
+        
+        #cart-container.show {
+          display: block; 
+        }
+      </style>
+  </head>
+  <body>
+
+<!--Menu-->
+  <div>
+    <div class="columns is-grouped-multiline"> </div>
+    <nav class="navbar navigation is-sticky-top has-background-link-light is-spaced" role="navigation" aria-label="main navigation"> 
+      <div class="navbar-brand">
+          <a class="navbar-item has-text-weight-bold is-size-4 mr-6" href="sklep.html">
+            VearMe
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+          </a>
+      </div>
+      <div id="navbarMenu" class="navbar-menu is-size-6 has-text-weight-bold">
+          <div class="navbar-start">
+            <a class="navbar-item" href="Oferta.html">
+              Oferta
+            </a>
+            <a class="navbar-item" href="kontaktVearMe.html">
+              Kontakt
+              </a>
+              <a class="navbar-item" href="Onas.html">
+              O nas
+          </div>
+
+          <div class="navbar-end is-flex is-flex-direction-column-mobile">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-link" id="zakladka-konto">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <strong>Konto</strong>
+                </a>
+                <a class="button is-link" id="show-cart">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-shopping-cart"></i>
+                  </span>
+                  <strong>Koszyk</strong>
+                  <span id="cart-count" class="badge" style="display:none;">(0)</span> <!-- Licznik produktów w nawiasach -->
+                </a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Kontener koszyka (domyślnie ukryty) -->
+<div id="cart-container" class="cart-container">
+  <div class="cart-header">
+    <h3 style="font-weight: bold;">Twój koszyk</h3>
+    <button id="close-cart" class="button is-small is-danger" style="font-weight: bold;">Zamknij</button>
+  </div>
+  <div id="cart-items">
+    <!-- Tutaj będą wyświetlane produkty w koszyku -->
+  </div>
+  <div id="cart-total">
+    <p style="margin-bottom:10px;"><b>Suma:</b> <span id="total-price">0 PLN</span></p>
+    <button id="go-to-cart" class="button is-primary" style="font-weight: bold;">Przejdź do koszyka</button>
+  </div>
+</div>
+
+<!--Hero-->
+  <section class="hero is-light">
+    <div class="video-container">
+      <video autoplay muted loop playsinline>
+        <source src="zdjecia_produktow/tlo.mp4" type="video/ogg">
+        Twoja przeglądarka nie obsługuje tego formatu wideo.
+      </video>
+      <div class="overlay">
+        <h1 class="title is-1 has-text-grey-dark" id="fade-in">Nowość</h1>
+        <p class="subtitle has-text-grey">Przejdź do naszej nowej aplikacji mobilnej <b>DressIT</b></p>
+        
+    <!--Przycisk Sprawdź aplikację--->
+        <a class="button is-white" id="sprawdz" href="DressIT.html">
+          <strong>Sprawdź</strong>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  
+<!---Główna sekcja-->
+  <section class="section" style="margin-top: 60px; margin-bottom: 30px;">
+
+<!--Kategorie produktów-->
+    <div class="columns is-mobile is-multiline is-centered">
+      <div class="column is-6-mobile is-3-tablet is-flex is-justify-content-center mb-6">
+        <a href="torebki.html">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="zdjecia_produktow/torebka6.jpg">
+            <figcaption class="has-text-centered has-text-weight-bold">Torebki</figcaption>
+          </figure>
+        </a>
+      </div>
+      <div class="column is-6-mobile is-3-tablet is-flex is-justify-content-center mb-6">
+        <a href="akcesoria.html">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="zdjecia_produktow/szalik1.jpg">
+            <figcaption class="has-text-centered has-text-weight-bold">Akcesoria</figcaption>
+          </figure>
+        </a>
+      </div>
+      <div class="column is-6-mobile is-3-tablet is-flex is-justify-content-center">
+        <a href="odziez.html">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="zdjecia_produktow/bluzka1.jpg">
+            <figcaption class="has-text-centered has-text-weight-bold">Odzież</figcaption>
+          </figure>
+        </a>
+      </div>
+      <div class="column is-6-mobile is-3-tablet is-flex is-justify-content-center">
+        <a href="obuwie.html">
+          <figure class="image is-128x128">
+            <img class="is-rounded" src="zdjecia_produktow/botki1.jpg">
+            <figcaption class="has-text-centered has-text-weight-bold">Obuwie</figcaption>
+          </figure>
+        </a>
+      </div>
+    </div>
+  </section>
+
+<!---Newsletter-->
+  <section class="section has-background-link-light">
+    <div class="container">
+      <div class="columns is-variable is-8 is-multiline">
+        <div class="column is-half mb-4">
+          <h4 class="has-text-white mt-2 mb-3 is-size-1 is-size-3-mobile has-text-weight-bold has-text-centered">VearMe - Twój styl, nasza pasja!</h4>
+          <p class="has-text-white has-text-justified">
+            VearMe to miejsce, gdzie moda spotyka technologię, tworząc unikalne doświadczenia zakupowe. Oferujemy najnowsze kolekcje odzieży, stylowe torebki, modne obuwie i wyjątkowe akcesoria, które podkreślą Twój niepowtarzalny styl. Dzięki inspirującym wizualizacjom i intuicyjnemu interfejsowi możesz z łatwością odkrywać nowe trendy i komponować wymarzone stylizacje. Zaufaj jakości, która wyróżnia – poczuj różnicę z VearMe i znajdź wszystko, czego potrzebujesz, by wyrazić siebie!
+          </p>
+        </div>
+        <div class="column is-half ml-auto">
+          <div class="mx-auto box p-6 has-background-light has-text-centered">
+            <h4 class="is-size-5 mb-2 has-text-weight-bold">Dołącz do naszego newslettera!</h4>
+            <p class="has-text-grey-dark mb-4">Dołącz do naszego Newslettera i odkryj świat mody pełen inspiracji i wyjątkowych okazji! Bądź pierwszą osobą, która dowie się o premierach najnowszych kolekcji odzieży, torebek, akcesoriów i obuwia.</p>
+            <form action="mailto:241194@stud.usz.edu.pl" method="post">
+              <input class="input mb-3" type="email" placeholder="Wpisz swój email" required>
+              <button class="button animate-button is-link is-fullwidth">Zapisz</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--Footer-->
+  <footer class="section">
+    <div class="container">
+        <div class="pb-5 is-flex is-flex-wrap-wrap is-justify-content-between is-justify-content-right">
+          <div>
+            <ul class="is-flex is-flex-wrap-wrap is-align-items-center">
+              <li class="mr-4"><a class="button is-white" href="Oferta.html">Oferta</a></li>
+              <li class="mr-4"><a class="button is-white" href="kontaktVearMe.html">Kontakt</a></li>
+              <li class="mr-4"><a class="button is-white" href="Onas.html">O nas</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class="pt-5" style="border-top: 1px solid #dee2e6;"></div>
+    <div class="container">
+      <div class="is-justify-content-between is-align-items-center has-text-centered">
+        <p>© 2025 Julia Fidecka i Katarzyna Adamska - VearMe | Wszystkie prawa zastrzeżone</p>
+        <div class="py-2"></div>
+        <div class="ml-auto">
+          <a class="mr-4 is-inline-block" href="https://www.facebook.com" target="_blank">
+            <img class="image is-32x32" src="assets/Facebook_Logo_Primary.png" alt="Facebook"></a>
+          <a class="mr-4 is-inline-block" href="https://www.instagram.com" target="_blank">
+            <img class="image is-32x32" src="assets/Instagram_Glyph_Gradient.png" alt="Instagram"></a>
+          <a class="is-inline-block" href="https://www.linkedin.com" target="_blank">
+            <img src="assets/LI-In-Bug.png" alt="Linkedin"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<!---toggles the class is-active on both the navbar-burger and the targeted navbar-menu-->
+  <script src="toggle.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+//Dodanie alertu o pliakch cookies przy otwarciu strony głownej
+    alert("Nasza strona wykorzystuje pliki cookies w celu poprawy jakości usług. Kontynuując, akceptujesz naszą politykę cookies.")
+ 
+//Dodanie animacji przy najechaniu kursorem na przycisk
+    document.querySelector('.animate-button').addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.1)';
+      this.style.transition = 'transform 0.3s';
+    });
+
+    document.querySelector('.animate-button').addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+    });
+      
+//Dodanie alertu o niedziałającej zakładce konto
+    document.getElementById('zakladka-konto').addEventListener('click',function(){
+      alert("Zakładka jest jeszcze niedostępna");
+    });
+
+        //---------------------------------------KOSZYK-----------------------------------------------
+$(document).ready(function() {
+  // Sprawdzamy, czy w localStorage jest zapisany koszyk
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Funkcja do aktualizacji widoku koszyka
+  function updateCartView() {
+    $('#cart-items').empty();
+    let totalPrice = 0;
+
+    cart.forEach((item, index) => {
+      $('#cart-items').append(`
+        <div class="cart-item">
+          <p>${item.name} - ${item.price} PLN
+          <button class="remove-from-cart button is-small " data-index="${index}"><i class="fa-solid fa-trash-can"></i></button></p>
+        </div>
+      `);
+      totalPrice += item.price;
+    });
+
+    $('#total-price').text(totalPrice + " PLN");
+    updateCartCount();  // Zaktualizowanie licznika
+  }
+
+  // Funkcja do zapisania koszyka do localStorage
+  function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  // Funkcja do aktualizacji licznika produktów w koszyku
+  function updateCartCount() {
+    const count = cart.length;
+
+    if (count > 0) {
+      $('#cart-count').text(`(${count})`).show();  
+    } else {
+      $('#cart-count').hide();  
+    }
+  }
+
+  // Funkcja do dodawania produktów do koszyka
+  $('.add-to-cart').on('click', function() {
+    const product = $(this).closest('.column').data();
+
+    // Dodanie produktu do koszyka
+    cart.push({
+      name: product.name,
+      price: parseFloat(product.price)
+    });
+
+    // Zaktualizowanie widoku koszyka
+    updateCartView();
+
+    // Zapisanie koszyka w localStorage
+    saveCartToLocalStorage();
+
+    // Wyświetlanie komunikatu, że produkt został dodany
+    const message = `Produkt ${product.name} został dodany do koszyka!`;
+    $('#cart-notification').text(message).fadeIn().delay(2000).fadeOut();
+  });
+
+  // Funkcja do usuwania produktów z koszyka
+  $(document).on('click', '.remove-from-cart', function() {
+    const index = $(this).data('index');
+    cart.splice(index, 1);
+
+    // Zaktualizowanie widoku koszyka
+    updateCartView();
+
+    // Zapisanie zaktualizowanego koszyka w localStorage
+    saveCartToLocalStorage();
+  });
+
+  // Pokazanie koszyka
+  $('#show-cart').on('click', function() {
+    $('#cart-container').toggleClass('show');
+  });
+
+  // Zamknięcie koszyka
+  $('#close-cart').on('click', function() {
+    $('#cart-container').removeClass('show');
+  });
+
+  // Funkcja "Przejdź do koszyka"
+  document.getElementById('go-to-cart').addEventListener('click',function(){
+    alert("Zakładka jest jeszcze niedostępna");
+  });
+  
+  // Inicjalizacja koszyka z localStorage (jeśli istnieje)
+  updateCartView();
+  });
+  </script>
+  </body>
+</html>
